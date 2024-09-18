@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
 public class dbVnua extends SQLiteOpenHelper {
     static String DB_NAME = "TechWorldShop";
     static int DB_VERSION = 22;

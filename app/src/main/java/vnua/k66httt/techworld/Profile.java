@@ -1,4 +1,6 @@
 package vnua.k66httt.techworld;
 
-public class Profile {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Profile extends AppCompatActivity {
 }

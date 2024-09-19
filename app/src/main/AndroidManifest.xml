@@ -16,33 +16,23 @@
         android:theme="@style/Theme.TechWorld"
         tools:targetApi="31">
         <activity
-            android:name=".EditUser"
-            android:exported="false" />
+            android:name=".EditUser" android:exported="false" />
         <activity
-            android:name=".ActivityManHinhCho.Man_Hinh_Cho"
-            android:exported="false" />
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho" android:exported="false" />
         <activity
-            android:name=".ActivityManHinhCho.Man_Hinh_Cho_2"
-            android:exported="false" />
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho_2" android:exported="false" />
         <activity
-            android:name=".ActivityManHinhCho.Man_Hinh_Cho_1"
-            android:exported="false" />
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho_1" android:exported="false" />
         <activity
-            android:name=".Profile"
-            android:exported="false" />
+            android:name=".Profile" android:exported="false" />
         <activity
-            android:name=".ManHinhRegister"
-            android:exported="false" />
+            android:name=".man_hinh_register" android:exported="false" />
         <activity
-            android:name=".ManHinhLogin "
-            android:exported="false" />
+            android:name=".man_hinh_login " android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".MainActivity" android:exported="true" android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".man_hinh_cho"
-            android:exported="true">
+            android:name=".man_hinh_cho" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

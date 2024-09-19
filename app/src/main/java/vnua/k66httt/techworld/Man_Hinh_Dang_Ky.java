@@ -10,7 +10,7 @@ import vnua.k66httt.techworld.Dao.UserDao;
 import vnua.k66httt.techworld.Model.User;
 import vnua.k66httt.techworld.databinding.ActivityManHinhRegisterBinding;
 
-public class ManHinhRegister extends AppCompatActivity {
+public class Man_Hinh_Dang_Ky extends AppCompatActivity {
     ActivityManHinhRegisterBinding binding;
     User user = new User();
 
@@ -21,7 +21,7 @@ public class ManHinhRegister extends AppCompatActivity {
         binding = ActivityManHinhRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.imgTroVeDangNhap.setOnClickListener(view -> {
-            Intent intent = new Intent(ManHinhRegister.this, ManHinhLogin.class);
+            Intent intent = new Intent(Man_Hinh_Dang_Ky.this, Man_Hinh_Login.class);
             startActivity(intent);
         });
         binding.btnRegister.setOnClickListener(view -> {
@@ -38,21 +38,21 @@ public class ManHinhRegister extends AppCompatActivity {
         user.setLoaiTaiKhoan("khachhang"); // Đặt loại tài khoản mặc định khi đăng ký
 
         // Thực hiện đăng ký bằng cách thêm người dùng vào cơ sở dữ liệu
-        UserDao dao = new UserDao(ManHinhRegister.this);
+        UserDao dao = new UserDao(Man_Hinh_Dang_Ky.this);
         boolean result = dao.checkDangKy(user);
 
         if (result) {
             // Đăng ký thành công
-            Intent intent = new Intent(ManHinhRegister.this, ManHinhLogin.class);
+            Intent intent = new Intent(Man_Hinh_Dang_Ky.this, Man_Hinh_Login.class);
             startActivity(intent);
         } else {
             // Đăng ký thất bại
-            Toast.makeText(ManHinhRegister.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Man_Hinh_Dang_Ky.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean validateDangKy() {
-        UserDao dao = new UserDao(ManHinhRegister.this);
+        UserDao dao = new UserDao(Man_Hinh_Dang_Ky.this);
         String tenDangNhap = binding.edtTenDangNhapDangKy.getText().toString().trim();
         String matKhau = binding.edtNhapPassDangKy.getText().toString().trim();
         String nhapLaiMatKhau = binding.edtNhapLaiPassDangKy.getText().toString().trim();

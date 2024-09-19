@@ -1,7 +1,6 @@
 package vnua.k66httt.techworld;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +8,10 @@ import java.util.ArrayList;
 
 import vnua.k66httt.techworld.Dao.UserDao;
 import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.databinding.ActivityEditUserBinding;
 
-public class EditProfile extends AppCompatActivity {
-    ActivityEditProfileBindling biding;
+public class EditUser extends AppCompatActivity {
+    ActivityEditUserBinding binding;
     UserDao dao;
     User user;
     private ArrayList<User> list = new ArrayList<>();

@@ -1,6 +1,6 @@
 package vnua.k66httt.techworld.Model;
 
-public class NguoiDung {
+public class User {
     private int maTaiKhoan;
     private String tenDangNhap;
     private String matKhau;
@@ -24,7 +24,7 @@ public class NguoiDung {
 //        this.loaiTaiKhoan = loaiTaiKhoan;
 //    }
 
-    public NguoiDung(String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan,String anhnguoidung) {
+    public User(String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan, String anhnguoidung) {
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
@@ -36,7 +36,7 @@ public class NguoiDung {
         this.anhnguoidung = anhnguoidung;
     }
 
-    public NguoiDung() {
+    public User() {
     }
 
     public String getAnhnguoidung() {

@@ -2,18 +2,48 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_techworld"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_techworld"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechWorld"
+        android:name=".Model.Myapplication"
         tools:targetApi="31">
         <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+
+        <activity
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho_2"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho_1"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+
+        <activity
+            android:name=".ManHinhRegister"
+            android:exported="false" />
+        <activity
+            android:name=".ManHinhLogin "
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".man_hinh_cho"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -68,7 +68,7 @@
                 android:theme="@style/TechShop2">
 
                 <EditText
-                    android:id="@+id/edtFirstName"
+                    android:id="@+id/edt_Ten_Dang_Nhap_DangKy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edtLocation"
+                    android:id="@+id/edtNhapDiaChiDangKy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/adttEmail"
+                    android:id="@+id/edtNhapEmailDangKy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"

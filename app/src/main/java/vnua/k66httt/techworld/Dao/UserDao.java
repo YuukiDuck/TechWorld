@@ -1,7 +1,5 @@
 package vnua.k66httt.techworld.Dao;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,20 +16,18 @@ public class UserDao {
     private final dbVnua dbVnua;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private static final String TAG = "UserDao";
 
     public UserDao(Context context) {
         this.dbVnua = new dbVnua(context);
         if (context != null) {
-            sharedPreferences = context.getSharedPreferences("NGUOIDUNG", context.MODE_PRIVATE);
+            sharedPreferences = context.getSharedPreferences("USER", context.MODE_PRIVATE);
         } else {
-            // Xử lý khi context là null, có thể thông báo lỗi hoặc thực hiện xử lý phù hợp
-            Log.e(TAG, "Context is null in NguoiDungDao constructor");
+            Log.e(TAG, "Context is null in UserDao constructor");
         }
-
     }
 
-    public ArrayList<User> getAllUser() {
-
+    public ArrayList<User> getAllUsers() {
         ArrayList<User> list = new ArrayList<>();
         SQLiteDatabase db = dbVnua.getReadableDatabase();
         try {
@@ -41,19 +37,16 @@ public class UserDao {
                 while (!cursor.isAfterLast()) {
                     User user = new User();
                     user.setMaTaiKhoan(cursor.getInt(0));
-                    user.setTenDangNhap(cursor.getString(1));
+                    user.setHoTen(cursor.getString(1));
                     user.setMatKhau(cursor.getString(2));
-                    user.setHoTen(cursor.getString(3));
-                    user.setEmail(cursor.getString(4));
-                    user.setSoDienThoai(cursor.getString(5));
-                    user.setDiaChi(cursor.getString(6));
-                    user.setSoTien(cursor.getInt(7));
-                    user.setLoaiTaiKhoan(cursor.getString(8));
-                    user.setAnhnguoidung(cursor.getString(9));
+                    user.setEmail(cursor.getString(3));
+                    user.setSoDienThoai(cursor.getString(4));
+                    user.setDiaChi(cursor.getString(5));
+                    user.setSoTien(cursor.getInt(6));
+                    user.setLoaiTaiKhoan(cursor.getString(7));
                     list.add(user);
                     cursor.moveToNext();
                 }
-
             }
         } catch (Exception e) {
             Log.i(TAG, "Lỗi", e);
@@ -62,28 +55,13 @@ public class UserDao {
         return list;
     }
 
-    public boolean checkDangNhap(String tenDangNhap, String matKhau) {
-        Log.d(TAG, "CheckDangNhap: " + tenDangNhap + " - " + matKhau);
+    public boolean checkDangNhap(String userIdentifier, String password) {
+        Log.d(TAG, "CheckLogin: " + userIdentifier + " - " + password);
         SQLiteDatabase database = dbVnua.getReadableDatabase();
         try {
-            Cursor cursor = database.rawQuery("SELECT * FROM TAIKHOAN WHERE tendangnhap = ? AND matkhau = ?", new String[]{tenDangNhap, matKhau});
-
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                editor = sharedPreferences.edit();
-                editor.putInt("mataikhoan", cursor.getInt(0));
-                editor.putString("tendangnhap", cursor.getString(1));
-                editor.putString("matkhau", cursor.getString(2));
-                editor.putString("hoten", cursor.getString(3));
-                editor.putString("email", cursor.getString(4));
-                editor.putString("diachi", cursor.getString(5));
-                editor.putInt("sotien", cursor.getInt(6));
-                editor.putString("loaitaikhoan", cursor.getString(7));
-                editor.apply();
-                return true;
-            } else {
-                return false;
-            }
+            Cursor cursor = database.rawQuery("SELECT * FROM TAIKHOAN WHERE (tendangnhap = ? OR email = ? OR sodienthoai = ?) AND matkhau = ?",
+                    new String[]{userIdentifier, userIdentifier, userIdentifier, password});
+            return cursor.getCount() > 0;
         } catch (Exception e) {
             Log.e(TAG, "Lỗi kiểm tra đăng nhập", e);
             return false;
@@ -93,10 +71,11 @@ public class UserDao {
     public boolean checkDangKy(User user) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tendangnhap", user.getTenDangNhap());
+        values.put("tendangnhap", user.getHoTen());
         values.put("matkhau", user.getMatKhau());
         values.put("hoten", user.getHoTen());
         values.put("email", user.getEmail());
+        values.put("sodienthoai", user.getSoDienThoai());
         values.put("diachi", user.getDiaChi());
         values.put("sotien", user.getSoTien());
         values.put("loaitaikhoan", user.getLoaiTaiKhoan());
@@ -104,95 +83,77 @@ public class UserDao {
         return result != -1;
     }
 
-    public boolean tenDangNhapDaTonTai(String tenDangNhap) {
+    public boolean usernameExists(String username) {
         SQLiteDatabase db = dbVnua.getReadableDatabase();
-        String query = "SELECT * FROM TAIKHOAN WHERE tendangnhap =?";
-        Cursor cursor = db.rawQuery(query, new String[]{tenDangNhap});
-        boolean tonTai = cursor.getCount() > 0;
+        String query = "SELECT * FROM TAIKHOAN WHERE tendangnhap = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{username});
+        boolean exists = cursor.getCount() > 0;
         cursor.close();
-        return tonTai;
+        return exists;
     }
 
-    public int xoaNguoiDung(int mand) {
+    public int deleteUser(int userId) {
         SQLiteDatabase database = dbVnua.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select * from DONHANG where mataikhoan = ?", new String[]{String.valueOf(mand)});
+        Cursor cursor = database.rawQuery("Select * from DONHANG where mataikhoan = ?", new String[]{String.valueOf(userId)});
         if (cursor.getCount() != 0) {
             return -1;
         }
-
-        long check = database.delete("TAIKHOAN", "mataikhoan = ?", new String[]{String.valueOf(mand)});
-        if (check == -1) {
-            return 0;
-        } else {
-            return 1;
-        }
+        long check = database.delete("TAIKHOAN", "mataikhoan = ?", new String[]{String.valueOf(userId)});
+        return check == -1 ? 0 : 1;
     }
 
-    public boolean update(int manguoidung, String tennguoidung, int sotien) {
+    public boolean updateUser(int userId, String username, int balance) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("hoten", tennguoidung);
-        values.put("sotien", sotien);
-        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(manguoidung)});
-        if (check == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        values.put("hoten", username);
+        values.put("sotien", balance);
+        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(userId)});
+        return check != -1;
     }
 
-    public boolean updatekUser(User nguoiDung) {
+    public boolean updateCustomer(User user) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("anhtaikhoan", nguoiDung.getAnhnguoidung());
-        values.put("hoten", nguoiDung.getHoTen());
-        values.put("tendangnhap", nguoiDung.getTenDangNhap());
-        values.put("matkhau", nguoiDung.getMatKhau());
-        values.put("email", nguoiDung.getEmail());
-        values.put("diachi", nguoiDung.getDiaChi());
-        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(nguoiDung.getMaTaiKhoan())});
-        if (check == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        values.put("hoten", user.getHoTen());
+        values.put("tendangnhap", user.getHoTen());
+        values.put("sodienthoai", user.getSoDienThoai());
+        values.put("matkhau", user.getMatKhau());
+        values.put("email", user.getEmail());
+        values.put("diachi", user.getDiaChi());
+        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(user.getMaTaiKhoan())});
+        return check != -1;
     }
 
-    public boolean updateSoTien(int maTaiKhoan, int soTienMoi) {
+    public boolean updateBalance(int userId, int newBalance) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("sotien", soTienMoi);
-
-        long result = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
-
+        values.put("sotien", newBalance);
+        long result = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(userId)});
         return result != -1;
     }
 
-    public User getNguoiDungByMaTaiKhoan(int maTaiKhoan) {
+    public User getUserById(int userId) {
         SQLiteDatabase db = dbVnua.getReadableDatabase();
-        User nguoiDung = null;
-
+        User user = null;
         try {
-            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
-
+            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new String[]{String.valueOf(userId)});
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                nguoiDung = new User();
-                nguoiDung.setMaTaiKhoan(cursor.getInt(0));
-                nguoiDung.setTenDangNhap(cursor.getString(1));
-                nguoiDung.setMatKhau(cursor.getString(2));
-                nguoiDung.setEmail(cursor.getString(3));
-                nguoiDung.setDiaChi(cursor.getString(4));
-                nguoiDung.setSoTien(cursor.getInt(5));
-                nguoiDung.setLoaiTaiKhoan(cursor.getString(6));
+                user = new User();
+                user.setMaTaiKhoan(cursor.getInt(0));
+                user.setHoTen(cursor.getString(1));
+                user.setMatKhau(cursor.getString(2));
+                user.setHoTen(cursor.getString(3));
+                user.setEmail(cursor.getString(4));
+                user.setSoDienThoai(cursor.getString(5));
+                user.setDiaChi(cursor.getString(6));
+                user.setSoTien(cursor.getInt(7));
+                user.setLoaiTaiKhoan(cursor.getString(8));
             }
-
             cursor.close();
         } catch (Exception e) {
             Log.e(TAG, "Lỗi", e);
         }
-
-        return nguoiDung;
+        return user;
     }
-
 }

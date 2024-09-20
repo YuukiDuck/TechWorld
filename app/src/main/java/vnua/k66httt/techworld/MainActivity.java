@@ -20,7 +20,6 @@ import vnua.k66httt.techworld.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    //    Menu mMenu;
     NavigationView navigationView;
 
 }

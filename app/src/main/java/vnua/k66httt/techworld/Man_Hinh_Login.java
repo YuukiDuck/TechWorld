@@ -21,15 +21,16 @@ public class Man_Hinh_Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_man_hinh_login);
         binding = ActivityManHinhLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         checkRemember();
         UserDao userDao = new UserDao(this);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_button);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_button);
         binding.btnDangNhap.setAnimation(animation);
         binding.edtEmailDangNhap.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         binding.edtMatKhau.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
         binding.btnDangNhap.setOnClickListener(view -> {
             view.startAnimation(animation);
             String userName = binding.edtEmailDangNhap.getText().toString();
@@ -37,7 +38,7 @@ public class Man_Hinh_Login extends AppCompatActivity {
 
             if (userName.isEmpty()) {
                 binding.edtEmailDangNhap.setError("Không được để trống");
-
+                return;
             }
             if (passWord.isEmpty()) {
                 binding.edtMatKhau.setError("Không được để trống");
@@ -48,7 +49,6 @@ public class Man_Hinh_Login extends AppCompatActivity {
                     editor.putString("username", userName);
                     editor.putString("password", passWord);
                     editor.putBoolean("isChecked", binding.chkNhoMatKhau.isChecked());
-
                     editor.apply();
                 } else {
                     editor.clear();
@@ -57,27 +57,23 @@ public class Man_Hinh_Login extends AppCompatActivity {
                 binding.edtEmailDangNhap.setText("");
                 binding.edtMatKhau.setText("");
                 Intent intent = new Intent(Man_Hinh_Login.this, MainActivity.class);
-                Man_Hinh_Login.this.startActivity(intent);
-                this.finish();
+                startActivity(intent);
+                finish();
             } else {
-                binding.edtEmailDangNhap.setError("Email đăng nhập không đúng");
+                binding.edtEmailDangNhap.setError("Email hoặc số điện thoại đăng nhập không đúng");
                 binding.edtMatKhau.setError("Mật khẩu không đúng");
             }
-
         });
 
-        binding.txtChuyenQuaDangKy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Man_Hinh_Login.this, Man_Hinh_Dang_Ky.class);
-                startActivity(intent);
-            }
+        binding.txtChuyenQuaDangKy.setOnClickListener(view -> {
+            Intent intent = new Intent(Man_Hinh_Login.this, Man_Hinh_Dang_Ky.class);
+            startActivity(intent);
         });
     }
 
     private void checkRemember() {
         preferences = this.getSharedPreferences("ACCOUNT", MODE_PRIVATE);
-        editor = preferences.edit(); // gọi dòng trên và edit vào nó
+        editor = preferences.edit();
         boolean isCheck = preferences.getBoolean("isChecked", false);
         if (isCheck) {
             binding.edtEmailDangNhap.setText(preferences.getString("username", ""));

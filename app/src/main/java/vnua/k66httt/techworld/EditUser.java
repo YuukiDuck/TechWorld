@@ -1,6 +1,10 @@
 package vnua.k66httt.techworld;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,11 +19,10 @@ public class EditUser extends AppCompatActivity {
     UserDao dao;
     User user;
     private ArrayList<User> list = new ArrayList<>();
-    String Email, matkhaucu, matkhaumoi, nhaplaimatkhaumoi, tendangnhap, sodienthoai, matkhau;
+    String email, matkhaucu, matkhaumoi, nhaplaimatkhaumoi, tenDangNhap, hovaten, matkhau, diachi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 }

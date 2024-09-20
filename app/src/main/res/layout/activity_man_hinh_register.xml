@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".man_hinh_register">
+    android:background="@drawable/khung_radius_top_30"
+    tools:context=".man_hinh_dang_ky">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,8 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="20sp"
-            android:layout_marginTop="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginTop="45sp"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -27,214 +27,224 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50sp"
+            android:layout_marginTop="30sp"
             android:fontFamily="@font/baloothambi2semibold"
             android:text="Đăng ký"
             android:textColor="@color/mau_chu"
-            android:textSize="30sp" />
+            android:textSize="37sp" />
 
         <LinearLayout
             android:id="@+id/lin_khung_Dang_ky"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_Dang_ky"
-            android:layout_gravity="center"
-            android:background="@drawable/khung_radius_top_30"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:background="@drawable/white"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="20sp"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvTenDangNhap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="tên đăng nhập"
-                android:textSize="20sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tipL_Ten_Dang_Nhap_DangKy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/mau_chu"
-                android:theme="@style/TechShop2">
-
-                <EditText
-                    android:id="@+id/edtTenDangNhapDangKy"
+                <!-- Họ tên -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/baloothambi2regular"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:text="Nhập vào tên đăng nhập"
-                    android:textColorHint="@color/mau_chu"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Họ tên"
+                    android:textColor="@color/mau_chu"
+                    android:paddingTop="10sp"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tv_gioi_tinh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5sp"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="Giới tính"
-                android:textSize="20sp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiL_Nhap_Ho_Ten_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <RadioGroup
-                android:id="@+id/rg_gioi_tinh"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/edt_Nhap_Ho_Ten_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập họ và tên"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <RadioButton
-                    android:id="@+id/rb_nam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nam"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/rb_nu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nữ"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/rb_khac"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Khác"
-                    android:textSize="16sp" />
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/tvLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="Địa chỉ"
-                android:textSize="20sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiL_Nhap_Dia_Chi_DangKy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edtNhapDiaChiDangKy"
+                <!-- Giới tính -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/baloothambi2regular"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:text="Nhập địa chỉ"
-                    android:textColorHint="@color/mau_chu"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Giới tính"
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="Email"
-                android:textSize="20sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiL_Nhap_Email_DangKy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edtNhapEmailDangKy"
+                <RadioGroup
+                    android:id="@+id/rg_gioi_tinh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/baloothambi2regular"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:text="Nhập vào Email"
-                    android:textColorHint="@color/mau_chu"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="Mật khẩu"
-                android:textSize="20sp" />
+                    <RadioButton
+                        android:id="@+id/rb_nam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nam"
+                        android:textSize="18sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tipL_Nhap_Pass_DangKy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_nu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nữ"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/edtNhapPassDangKy"
+                    <RadioButton
+                        android:id="@+id/rb_khac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khác"
+                        android:textSize="18sp" />
+                </RadioGroup>
+
+                <!-- Số điện thoại -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/baloothambi2regular"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPassword"
-                    android:text="Nhập mật khẩu"
-                    android:textColorHint="@color/mau_chu"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Số điện thoại"
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tvReturnPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:text="Nhập lại mật kẩu"
-                android:textSize="20sp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiL_Nhap_SDT_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiL_Nhap_Lai_Pass_DangKy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/edt_Nhap_SDT_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập số điện thoại"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/edtNhapLaiPassDangKy"
+                <!-- Địa chỉ -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:fontFamily="@font/baloothambi2regular"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPassword"
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Địa chỉ"
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiL_Nhap_Dia_Chi_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edt_Nhap_Dia_Chi_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập địa chỉ"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Email -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Email"
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiL_Nhap_Email_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edt_Nhap_Email_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập email"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Mật khẩu -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloothambi2semibold"
+                    android:text="Mật khẩu"
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tipL_Nhap_Pass_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edt_Nhap_Pass_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập mật khẩu"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Nhập lại mật khẩu -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloothambi2semibold"
                     android:text="Nhập lại mật khẩu"
-                    android:textColorHint="@color/mau_chu"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:textColor="@color/mau_chu"
+                    android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lin_khung_Dang_ky"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="12sp"
-                android:background="@drawable/khung_button_dangnhap"
-                android:fontFamily="@font/baloothambi2semibold"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:text="Đăng ký"
-                android:textSize="22sp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiL_Nhap_Lai_Pass_DangKy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edt_Nhap_Lai_Pass_DangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloothambi2regular"
+                        android:hint="Nhập lại mật khẩu"
+                        android:imeOptions="actionNext"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDongY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin_khung_Dang_ky"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/khung_button_dangnhap"
+            android:fontFamily="@font/baloothambi2semibold"
+            android:gravity="center"
+            android:text="Đăng ký"
+            android:textSize="25sp" />
     </RelativeLayout>
 </ScrollView>

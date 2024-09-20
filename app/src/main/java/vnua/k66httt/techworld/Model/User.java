@@ -2,50 +2,27 @@ package vnua.k66httt.techworld.Model;
 
 public class User {
     private int maTaiKhoan;
-    private String tenDangNhap;
-    private String matKhau;
     private String hoTen;
+    private String gioiTinh;
+    private String matKhau;
+    private String soDienThoai; // Đổi thành String
     private String email;
-    private String soDienThoai;
     private String diaChi;
     private int soTien;
     private String loaiTaiKhoan;
-    private String anhnguoidung;
 
-//    public NguoiDung(int maTaiKhoan, String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan) {
-//        this.maTaiKhoan = maTaiKhoan;
-//        this.tenDangNhap = tenDangNhap;
-//        this.matKhau = matKhau;
-//        this.hoTen = hoTen;
-//        this.email = email;
-//        this.soDienThoai = soDienThoai;
-//        this.diaChi = diaChi;
-//        this.soTien = soTien;
-//        this.loaiTaiKhoan = loaiTaiKhoan;
-//    }
-
-    public User(String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan, String anhnguoidung) {
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
+    public User(String hoTen, String soDienThoai, String gioiTinh, String matKhau, String email, String diaChi, int soTien, String loaiTaiKhoan) {
         this.hoTen = hoTen;
-        this.email = email;
+        this.gioiTinh = gioiTinh;
+        this.matKhau = matKhau;
         this.soDienThoai = soDienThoai;
+        this.email = email;
         this.diaChi = diaChi;
         this.soTien = soTien;
         this.loaiTaiKhoan = loaiTaiKhoan;
-        this.anhnguoidung = anhnguoidung;
     }
 
-    public User() {
-    }
-
-    public String getAnhnguoidung() {
-        return anhnguoidung;
-    }
-
-    public void setAnhnguoidung(String anhnguoidung) {
-        this.anhnguoidung = anhnguoidung;
-    }
+    public User() {}
 
     public int getMaTaiKhoan() {
         return maTaiKhoan;
@@ -53,22 +30,6 @@ public class User {
 
     public void setMaTaiKhoan(int maTaiKhoan) {
         this.maTaiKhoan = maTaiKhoan;
-    }
-
-    public String getTenDangNhap() {
-        return tenDangNhap;
-    }
-
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
-    }
-
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
     }
 
     public String getHoTen() {
@@ -79,12 +40,20 @@ public class User {
         this.hoTen = hoTen;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
     public String getSoDienThoai() {
@@ -93,6 +62,14 @@ public class User {
 
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDiaChi() {

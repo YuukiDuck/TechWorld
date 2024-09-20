@@ -3,48 +3,26 @@ package vnua.k66httt.techworld.Model;
 public class User {
     private int maTaiKhoan;
     private String tenDangNhap;
+    private String gioiTinh;
     private String matKhau;
     private String hoTen;
     private String email;
-    private String soDienThoai;
     private String diaChi;
     private int soTien;
     private String loaiTaiKhoan;
-    private String anhnguoidung;
 
-//    public NguoiDung(int maTaiKhoan, String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan) {
-//        this.maTaiKhoan = maTaiKhoan;
-//        this.tenDangNhap = tenDangNhap;
-//        this.matKhau = matKhau;
-//        this.hoTen = hoTen;
-//        this.email = email;
-//        this.soDienThoai = soDienThoai;
-//        this.diaChi = diaChi;
-//        this.soTien = soTien;
-//        this.loaiTaiKhoan = loaiTaiKhoan;
-//    }
-
-    public User(String tenDangNhap, String matKhau, String hoTen, String email, String soDienThoai, String diaChi, int soTien, String loaiTaiKhoan, String anhnguoidung) {
+    public User(String tenDangNhap,String gioiTinh, String matKhau, String hoTen, String email, String diaChi, int soTien, String loaiTaiKhoan, String anhnguoidung) {
         this.tenDangNhap = tenDangNhap;
+        this.gioiTinh = gioiTinh;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
         this.email = email;
-        this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.soTien = soTien;
         this.loaiTaiKhoan = loaiTaiKhoan;
-        this.anhnguoidung = anhnguoidung;
     }
 
     public User() {
-    }
-
-    public String getAnhnguoidung() {
-        return anhnguoidung;
-    }
-
-    public void setAnhnguoidung(String anhnguoidung) {
-        this.anhnguoidung = anhnguoidung;
     }
 
     public int getMaTaiKhoan() {
@@ -61,6 +39,14 @@ public class User {
 
     public void setTenDangNhap(String tenDangNhap) {
         this.tenDangNhap = tenDangNhap;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     public String getMatKhau() {
@@ -85,14 +71,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
     }
 
     public String getDiaChi() {

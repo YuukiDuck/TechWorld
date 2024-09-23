@@ -30,7 +30,7 @@ public class UserDao {
 
     }
 
-    public boolean checkLogin(String userIdentifier, String password) {
+    public boolean checkDangNhap(String userIdentifier, String password) {
         Log.d(TAG, "CheckLogin: " + userIdentifier + " - " + password);
         SQLiteDatabase database = dbVnua.getReadableDatabase();
         try {

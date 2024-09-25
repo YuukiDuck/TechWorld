@@ -8,6 +8,7 @@
     tools:context=".Man_Hinh_Dang_Ky">
 
     <RelativeLayout
+        android:id="@+id/editTtin"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,18 +28,48 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="48dp"
+            android:layout_marginLeft="115dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="115dp"
             android:fontFamily="@font/baloothambi2semibold"
             android:text="Sửa thông tin"
             android:textColor="@color/mau_chu"
             android:textSize="30sp" />
 
-        <LinearLayout
-            android:id="@+id/lin_khung_Dang_ky"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_Dang_ky"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/imgEdit">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/avatar"
+                android:layout_alignBottom="@id/avatar"
+                android:layout_marginEnd="160dp"
+                android:layout_marginBottom="-10dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="Sửa"
+                android:textColor="@color/mau_hong"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_khung_sua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgEdit"
             android:layout_gravity="center"
             android:background="@drawable/khung_radius_top_30"
             android:orientation="vertical"
@@ -57,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloothambi2semibold"
-                android:text="tên đăng nhập"
+                android:text="Họ tên"
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -233,7 +264,7 @@
                 android:fontFamily="@font/baloothambi2semibold"
                 android:gravity="center"
                 android:paddingTop="10dp"
-                android:text="Đăng ký"
+                android:text="Đồng ý"
                 android:textSize="22sp" />
         </LinearLayout>
     </RelativeLayout>

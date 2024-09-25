@@ -50,5 +50,6 @@ dependencies {
     implementation ("me.relex:circleindicator:2.1.6")
     //picaso
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation(kotlin("script-runtime"))
 
 }

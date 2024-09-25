@@ -104,6 +104,32 @@ public class UserDao {
         return result != -1;
     }
 
+    public  User getUserByMaTaiKhoan(int maTaiKhoan){
+        SQLiteDatabase db = dbVnua.getReadableDatabase();
+        User user = null;
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new  String[] {String.valueOf(maTaiKhoan)} );
+
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                user= new User();
+                user.setMaTaiKhoan(cursor.getInt(0));
+                user.setMatKhau(cursor.getString(1));
+                user.setHoTen(cursor.getString(2));
+                user.setEmail(cursor.getString(3));
+                user.setSoDienThoai(cursor.getString(4));
+                user.setDiaChi(cursor.getString(5));
+                user.setSoTien(cursor.getInt(6));
+                user.setLoaiTaiKhoan(cursor.getString(7));
+            }
+
+            cursor.close();
+        } catch ( Exception e) {
+            Log.e(TAG,"Lỗi",e);
+        }
+        return user;
+    }
+
     public int deleteUser(int maTaiKhoan) {
         SQLiteDatabase database = dbVnua.getWritableDatabase();
         long result = database.delete("TAIKHOAN", "mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});

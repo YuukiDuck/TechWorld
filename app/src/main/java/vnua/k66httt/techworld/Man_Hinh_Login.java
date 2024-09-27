@@ -3,7 +3,6 @@ package vnua.k66httt.techworld;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
@@ -66,7 +65,7 @@ public class Man_Hinh_Login extends AppCompatActivity {
         });
 
         binding.txtChuyenQuaDangKy.setOnClickListener(view -> {
-            Intent intent = new Intent(Man_Hinh_Login.this, Man_Hinh_Dang_Ky.class);
+            Intent intent = new Intent(Man_Hinh_Login.this, Man_Hinh_Register.class);
             startActivity(intent);
         });
     }

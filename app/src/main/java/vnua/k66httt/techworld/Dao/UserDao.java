@@ -104,15 +104,15 @@ public class UserDao {
         return result != -1;
     }
 
-    public  User getUserByMaTaiKhoan(int maTaiKhoan){
+    public User getUserByMaTaiKhoan(int maTaiKhoan) {
         SQLiteDatabase db = dbVnua.getReadableDatabase();
         User user = null;
         try {
-            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new  String[] {String.valueOf(maTaiKhoan)} );
+            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
 
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                user= new User();
+                user = new User();
                 user.setMaTaiKhoan(cursor.getInt(0));
                 user.setMatKhau(cursor.getString(1));
                 user.setHoTen(cursor.getString(2));
@@ -124,10 +124,26 @@ public class UserDao {
             }
 
             cursor.close();
-        } catch ( Exception e) {
-            Log.e(TAG,"Lỗi",e);
+        } catch (Exception e) {
+            Log.e(TAG, "Lỗi", e);
         }
         return user;
+    }
+
+    public boolean updatekhachhang(User user) {
+        SQLiteDatabase db = dbVnua.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("hoten", user.getHoTen());
+        values.put("sodienthoai", user.getSoDienThoai());
+        values.put("matkhau", user.getMatKhau());
+        values.put("email", user.getEmail());
+        values.put("diachi", user.getDiaChi());
+        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(user.getMaTaiKhoan())});
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public int deleteUser(int maTaiKhoan) {

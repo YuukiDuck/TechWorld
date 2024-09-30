@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="20dp"/>
 <size android:width="220sp"/>
-    <solid android:color="@color/mau_button"/>
+    <solid android:color="#FFF494"/>
 </shape>

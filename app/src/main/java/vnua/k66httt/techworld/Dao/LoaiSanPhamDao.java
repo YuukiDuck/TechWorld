@@ -6,9 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import vnua.k66httt.techworld.Database.dbVnua;
+
 
 import vnua.k66httt.techworld.Model.LoaiSanPham;
-import vnua.k66httt.techworld.Database.dbVnua;
 
 public class LoaiSanPhamDao {
     private SQLiteDatabase db;

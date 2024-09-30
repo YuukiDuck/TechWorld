@@ -54,7 +54,7 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/tiedtTenDangNhap"
+                android:id="@+id/tiedtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -126,17 +126,19 @@
 
             </RelativeLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnDangNhap"
                 android:layout_width="220sp"
                 android:layout_height="60sp"
+                android:layout_marginTop="20sp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:drawableBottom="@drawable/khung_button"
+                android:layout_marginBottom="80dp"
+                android:background="@drawable/khung_button_dangnhap"
                 android:gravity="center"
-                android:text="Login"
+                android:layout_gravity="center"
+                android:fontFamily="@font/baloothambi2semibold"
+                android:text="Đăng nhập"
                 android:textColor="#4E352F"
                 android:textSize="26sp" />
 

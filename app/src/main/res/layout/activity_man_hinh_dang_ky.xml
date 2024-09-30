@@ -128,10 +128,10 @@
                         android:id="@+id/edt_Nhap_SDT_DangKy"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"
                         android:fontFamily="@font/baloothambi2regular"
                         android:hint="Nhập số điện thoại"
                         android:imeOptions="actionNext"
+                        android:inputType="number"
                         android:textSize="18sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 

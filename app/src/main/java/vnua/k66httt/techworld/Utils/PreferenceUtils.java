@@ -16,7 +16,7 @@ public class PreferenceUtils {
 
             // Sau khi hoàn thành công việc, đặt isFirstRun thành false
             preferences.edit().putBoolean(KEY_FIRST_RUN, false).apply();
-        }else {
+        } else {
             Log.d("PreferenceUtils", "Not the first run");
         }
 

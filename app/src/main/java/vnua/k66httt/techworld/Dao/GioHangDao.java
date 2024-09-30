@@ -1,7 +1,5 @@
 package vnua.k66httt.techworld.Dao;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
+import vnua.k66httt.techworld.Database.dbVnua;
 
 import vnua.k66httt.techworld.Model.GioHang;
-import vnua.k66httt.techworld.Database.dbVnua;
 
 public class GioHangDao {
     private dbVnua dbVnua;

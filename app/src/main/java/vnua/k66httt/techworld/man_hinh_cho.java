@@ -1,12 +1,9 @@
 package vnua.k66httt.techworld;
 
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import vnua.k66httt.techworld.ActivityManHinhCho.Man_Hinh_Cho_1;
 import vnua.k66httt.techworld.Utils.PreferenceUtils;
 
@@ -17,8 +14,7 @@ public class man_hinh_cho extends AppCompatActivity {
         setContentView(R.layout.activity_man_hinh_cho_1);
         Handler handler = new Handler();
         if (PreferenceUtils.isFirstRun(this)) {
-            // Nếu là lần đầu, hiển thị 3 màn hình
-
+            // Nếu là lần đầu, hiển thị 3 màn hình chờ
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -28,7 +24,7 @@ public class man_hinh_cho extends AppCompatActivity {
                 }
             }, 1000);
         } else {
-
+            // Nếu không phải lần đầu, chuyển sang màn hình đăng nhập
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -38,9 +34,5 @@ public class man_hinh_cho extends AppCompatActivity {
                 }
             }, 1000);
         }
-
-
-
     }
-
 }

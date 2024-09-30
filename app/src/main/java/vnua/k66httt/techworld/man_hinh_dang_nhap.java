@@ -10,17 +10,17 @@ import android.view.inputmethod.EditorInfo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.databinding.ActivityManHinhLoginBinding;
+import vnua.k66httt.techworld.databinding.ActivityManHinhDangNhapBinding;
 
-public class Man_Hinh_Login extends AppCompatActivity {
-    ActivityManHinhLoginBinding binding;
+public class man_hinh_dang_nhap extends AppCompatActivity {
+    ActivityManHinhDangNhapBinding binding;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityManHinhLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityManHinhDangNhapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         checkRemember();
@@ -55,7 +55,7 @@ public class Man_Hinh_Login extends AppCompatActivity {
                 }
                 binding.edtEmailDangNhap.setText("");
                 binding.edtMatKhau.setText("");
-                Intent intent = new Intent(Man_Hinh_Login.this, MainActivity.class);
+                Intent intent = new Intent(man_hinh_dang_nhap.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             } else {
@@ -65,7 +65,7 @@ public class Man_Hinh_Login extends AppCompatActivity {
         });
 
         binding.txtChuyenQuaDangKy.setOnClickListener(view -> {
-            Intent intent = new Intent(Man_Hinh_Login.this, Man_Hinh_Register.class);
+            Intent intent = new Intent(man_hinh_dang_nhap.this, man_hinh_dang_ky.class);
             startActivity(intent);
         });
     }

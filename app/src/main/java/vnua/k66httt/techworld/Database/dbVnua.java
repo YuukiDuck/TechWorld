@@ -17,7 +17,6 @@ public class dbVnua extends SQLiteOpenHelper {
         ///1. Bảng tài khoản
         String taiKhoan = "CREATE TABLE TAIKHOAN(" +
                 "mataikhoan integer primary key autoincrement," +
-                " tendangnhap text not null," +
                 " matkhau text not null," +
                 " hoten text not null," +
                 " email text not null," +
@@ -28,8 +27,8 @@ public class dbVnua extends SQLiteOpenHelper {
                 " anhtaikhoan text not null)";
         sqLiteDatabase.execSQL(taiKhoan);
 
-        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'nqduc','111','Nguyễn Quý Đức','ducnq@gmail.com','0787613866','ha noi',10000,'admin','https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/Anh-avatar-hoat-hinh-de-thuong-xinh-xan.jpg?1704788263223')");
-        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'pdhoang','123','Phạm Đức Hoàng','hoangpd@gmail.com','0787613866','ha noi',10000,'admin','https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg')");
+        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'111','Nguyễn Quý Đức','ducnq@gmail.com','0787613866','ha noi',10000,'admin','https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/Anh-avatar-hoat-hinh-de-thuong-xinh-xan.jpg?1704788263223')");
+        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'123','Phạm Đức Hoàng','hoangpd@gmail.com','0787613866','ha noi',10000,'admin','https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg')");
 
 
         //2. Bảng loại sản phẩm

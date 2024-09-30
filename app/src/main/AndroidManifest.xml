@@ -24,9 +24,9 @@
         <activity
             android:name=".Profile" android:exported="false" />
         <activity
-            android:name=".man_hinh_register" android:exported="false" />
+            android:name=".man_hinh_dang_ky" android:exported="false" />
         <activity
-            android:name=".man_hinh_login" android:exported="false" />
+            android:name=".man_hinh_dang_nhap" android:exported="false" />
         <activity
             android:name=".MainActivity" android:exported="true" android:windowSoftInputMode="adjustPan" />
         <activity

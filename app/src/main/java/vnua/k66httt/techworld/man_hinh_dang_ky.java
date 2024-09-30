@@ -8,20 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import vnua.k66httt.techworld.Dao.UserDao;
 import vnua.k66httt.techworld.Model.User;
-import vnua.k66httt.techworld.databinding.ActivityManHinhRegisterBinding;
+import vnua.k66httt.techworld.databinding.ActivityManHinhDangKyBinding;
 
-public class Man_Hinh_Register extends AppCompatActivity {
-    ActivityManHinhRegisterBinding binding;
+public class man_hinh_dang_ky extends AppCompatActivity {
+    ActivityManHinhDangKyBinding binding;
     User user  = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityManHinhRegisterBinding.inflate(getLayoutInflater());
+        binding = ActivityManHinhDangKyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.imgTroVeDangNhap.setOnClickListener(view -> {
-            Intent intent = new Intent(Man_Hinh_Register.this, Man_Hinh_Login.class);
+            Intent intent = new Intent(man_hinh_dang_ky.this, man_hinh_dang_nhap.class);
             startActivity(intent);
         });
 
@@ -44,22 +44,22 @@ public class Man_Hinh_Register extends AppCompatActivity {
             user.setGioiTinh(binding.rgGioiTinh.getCheckedRadioButtonId() == R.id.rbnam ? "Nam" : "Nữ");
 
         // Thực hiện đăng ký bằng cách thêm người dùng vào cơ sở dữ liệu
-        UserDao dao = new UserDao(Man_Hinh_Register.this);
+        UserDao dao = new UserDao(man_hinh_dang_ky.this);
         boolean result = dao.checkDangKy(user);
 
         if (result) {
             // Đăng ký thành công
-            Intent intent = new Intent(Man_Hinh_Register.this, Man_Hinh_Login.class);
+            Intent intent = new Intent(man_hinh_dang_ky.this, man_hinh_dang_nhap.class);
             startActivity(intent);
             finish();
         } else {
             // Đăng ký thất bại
-            Toast.makeText(Man_Hinh_Register.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+            Toast.makeText(man_hinh_dang_ky.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean validateDangKy() {
-        UserDao dao = new UserDao(Man_Hinh_Register.this);
+        UserDao dao = new UserDao(man_hinh_dang_ky.this);
         String matKhau = binding.edtNhapPassDangKy.getText().toString().trim();
         String nhapLaiMatKhau = binding.edtNhapLaiPassDangKy.getText().toString().trim();
         String hoTen = binding.edtNhapHoTenDangKy.getText().toString().trim();

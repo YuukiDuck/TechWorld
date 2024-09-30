@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 
-import vnua.k66httt.techworld.Man_Hinh_Login;
+import vnua.k66httt.techworld.man_hinh_dang_nhap;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.ActivityManHinhCho3Binding;
 
@@ -22,7 +22,7 @@ public class Man_Hinh_Cho_3 extends AppCompatActivity {
         binding.btnTiepTucMh3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Man_Hinh_Cho_3.this, Man_Hinh_Login.class);
+                Intent intent = new Intent(Man_Hinh_Cho_3.this, man_hinh_dang_nhap.class);
 
                 // Tạo hiệu ứng chuyển màn hình từ trái sang phải
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(

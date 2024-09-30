@@ -72,7 +72,7 @@ public class Sua_thong_tin_nguoi_dung extends AppCompatActivity {
                     if (result) {
                         list.clear();
                         list = dao.getAllUsers();
-                        Intent intent = new Intent(Sua_thong_tin_nguoi_dung.this, Man_Hinh_Login.class);
+                        Intent intent = new Intent(Sua_thong_tin_nguoi_dung.this, man_hinh_dang_nhap.class);
                         startActivity(intent);
                         Toast.makeText(Sua_thong_tin_nguoi_dung.this, "Đổi thông tin thành công", Toast.LENGTH_SHORT).show();
                     } else {

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import vnua.k66httt.techworld.ActivityManHinhCho.Man_Hinh_Cho_1;
 import vnua.k66httt.techworld.Utils.PreferenceUtils;
 
-public class Man_Hinh_cho extends AppCompatActivity {
+public class man_hinh_cho extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class Man_Hinh_cho extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(Man_Hinh_cho.this, Man_Hinh_Cho_1.class);
+                    Intent intent = new Intent(man_hinh_cho.this, Man_Hinh_Cho_1.class);
                     startActivity(intent);
                     finish();
                 }
@@ -32,7 +32,7 @@ public class Man_Hinh_cho extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(Man_Hinh_cho.this, Man_Hinh_Login.class);
+                    Intent intent = new Intent(man_hinh_cho.this, man_hinh_dang_nhap.class);
                     startActivity(intent);
                     finish();
                 }

@@ -14,7 +14,7 @@ import vnua.k66httt.techworld.Dao.UserDao;
 import vnua.k66httt.techworld.Model.User;
 import vnua.k66httt.techworld.databinding.ActivitySuaThongTinNguoiDungBinding;
 
-public class Sua_thong_tin_nguoi_dung extends AppCompatActivity {
+public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
     ActivitySuaThongTinNguoiDungBinding binding;
     UserDao dao;
     User user;
@@ -43,7 +43,7 @@ public class Sua_thong_tin_nguoi_dung extends AppCompatActivity {
         binding.imgTroVeDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Sua_thong_tin_nguoi_dung.this, Profile.class));
+                startActivity(new Intent(sua_thong_tin_nguoi_dung.this, Profile.class));
             }
         });
 
@@ -72,12 +72,12 @@ public class Sua_thong_tin_nguoi_dung extends AppCompatActivity {
                     if (result) {
                         list.clear();
                         list = dao.getAllUsers();
-                        Intent intent = new Intent(Sua_thong_tin_nguoi_dung.this, man_hinh_dang_nhap.class);
+                        Intent intent = new Intent(sua_thong_tin_nguoi_dung.this, man_hinh_dang_nhap.class);
                         startActivity(intent);
-                        Toast.makeText(Sua_thong_tin_nguoi_dung.this, "Đổi thông tin thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đổi thông tin thành công", Toast.LENGTH_SHORT).show();
                     } else {
                         // Đăng ký thất bại
-                        Toast.makeText(Sua_thong_tin_nguoi_dung.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     binding.edmatKhau.setError("mật khẩu cũ không trùng khớp");

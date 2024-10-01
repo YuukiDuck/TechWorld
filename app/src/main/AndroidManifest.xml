@@ -14,7 +14,7 @@
         android:theme="@style/Theme.TechWorld"
         tools:targetApi="31">
         <activity
-            android:name=".Sua_thong_tin_nguoi_dung" android:exported="false" />
+            android:name=".sua_thong_tin_nguoi_dung" android:exported="false" />
         <activity
             android:name=".ActivityManHinhCho.Man_Hinh_Cho" android:exported="false" />
         <activity

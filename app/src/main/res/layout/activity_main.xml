@@ -45,7 +45,7 @@
                         android:textSize="30sp" />
 
                     <ImageView
-                        android:id="@+id/btn_proFile"
+                        android:id="@+id/btn_giohang"
                         android:layout_width="35sp"
                         android:layout_height="40sp"
                         android:layout_gravity="end"

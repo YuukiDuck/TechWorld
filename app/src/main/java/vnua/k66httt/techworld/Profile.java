@@ -13,6 +13,7 @@ import vnua.k66httt.techworld.databinding.ActivityProfileBinding;
 
 public class Profile extends AppCompatActivity {
     ActivityProfileBinding binding;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class Profile extends AppCompatActivity {
         setContentView(binding.getRoot());
         SharedPreferences preferences = getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
         int mand = preferences.getInt("mataikhoan", 0);
-        String tenDN = preferences.getString("tendangnhap", "");
+        String tendangnhap = preferences.getString("tendangnhap", "");
         String matkhau = preferences.getString("matkhau", "");
         String hoten = preferences.getString("hoten", "");
         String email = preferences.getString("email", "");
@@ -38,17 +39,14 @@ public class Profile extends AppCompatActivity {
         binding.txtPLoaiTaiKhoan.setText("Loại tài khoản: " + loaitaikhoan);
         binding.btnPDangXuat.setOnClickListener(view -> {
                     Profile.this.startActivity(new Intent(Profile.this, man_hinh_dang_nhap.class));
-//            getOnBackPressedDispatcher().onBackPressed();
                 }
         );
         binding.imgBack.setOnClickListener(new View.OnClickListener() {
                                                @Override
                                                public void onClick(View view) {
-//                                                   Profile.this.getOnBackPressedDispatcher().onBackPressed();
                                                    Profile.this.startActivity(new Intent(Profile.this, MainActivity.class));
                                                }
                                            }
-
         );
 
         binding.btnhoso.setOnClickListener(new View.OnClickListener() {

@@ -70,7 +70,7 @@
             android:layout_gravity="start"
             android:background="@color/mau_hong"
             app:headerLayout="@layout/header_menu"
-            app:menu="@menu/menu_quan_ly" />
+            app:menu="@menu/menu_quanly" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

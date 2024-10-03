@@ -159,7 +159,7 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
 
     // Hàm kiểm tra định dạng email3
     private boolean isValidEmail(String email) {
-        String regex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+(\\.+[a-z]+)?";
+        String regex = "[a-zA-Z0-9._-]+@gmail\\.com";
         return email.matches(regex);
     }
 }

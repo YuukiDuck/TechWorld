@@ -9,7 +9,7 @@
     <item
         android:id="@+id/nav_bot_sanpham"
         android:icon="@drawable/ic_sanpham"
-        android:title="Gian hàng" />
+        android:title="Sản phẩm" />
 
     <item
         android:id="@+id/nav_bot_naptien"
@@ -19,7 +19,7 @@
     <item
         android:id="@+id/nav_bot_profile"
         android:icon="@drawable/ic_user"
-        android:title="Profile" />
+        android:title="Hồ sơ" />
 
 
 </menu>

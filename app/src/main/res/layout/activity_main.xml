@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,10 +18,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.appcompat.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_Main"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10sp"
                 android:background="@drawable/khung_toolbar"
                 app:navigationIcon="@drawable/ic_menu"
@@ -37,26 +38,29 @@
                         android:id="@+id/txtSoTien"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center"
                         android:layout_marginRight="10sp"
                         android:drawableEnd="@drawable/ic_coin"
-                        android:text="10"
-                        android:textSize="18sp" />
+                        android:text="0"
+                        android:textSize="30sp" />
 
                     <ImageView
-                        android:id="@+id/btn_GioHang"
-                        android:layout_width="40sp"
+                        android:id="@+id/btn_proFile"
+                        android:layout_width="35sp"
                         android:layout_height="40sp"
                         android:layout_gravity="end"
-                        android:layout_marginEnd="10sp" />
+                        android:layout_marginEnd="10sp"
+                        android:src="@drawable/ic_cart" />
                 </LinearLayout>
-            </android.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
             <FrameLayout
                 android:id="@+id/frameLayoutMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="70sp"/>
+                android:layout_marginBottom="70sp" />
+
+
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
@@ -66,16 +70,21 @@
             android:layout_gravity="start"
             android:background="@color/mau_hong"
             app:headerLayout="@layout/header_menu"
-            app:menu="@menu/menu_quanly" />
+            app:menu="@menu/menu_quan_ly" />
+
     </androidx.drawerlayout.widget.DrawerLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bottom_Main"
         android:layout_width="match_parent"
-        android:layout_height="70sp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/vang_nhat"
         app:itemBackground="@drawable/nav_bottom"
+        app:itemIconTint="@drawable/color_nav"
+        app:itemTextColor="@drawable/color_nav"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_nav_bottom" />
+
 
 </FrameLayout>

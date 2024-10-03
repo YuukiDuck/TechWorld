@@ -14,12 +14,12 @@
     <item
         android:id="@+id/nav_bot_naptien"
         android:icon="@drawable/ic_naptien"
-        android:title="Giỏ hàng" />
+        android:title="Ví" />
 
     <item
         android:id="@+id/nav_bot_profile"
         android:icon="@drawable/ic_user"
-        android:title="profile" />
+        android:title="Profile" />
 
 
 </menu>

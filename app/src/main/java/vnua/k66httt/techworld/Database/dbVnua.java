@@ -6,11 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class dbVnua extends SQLiteOpenHelper {
     static String DB_NAME = "TechWorldShop";
-    static int DB_VERSION = 22;
+    static int DB_VERSION = 23;
 
     public dbVnua(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // 1. Bảng tài khoản
@@ -22,7 +23,7 @@ public class dbVnua extends SQLiteOpenHelper {
                 " sodienthoai interger not null," +
                 " diachi text not null," +
                 " sotien integer not null," +
-                " loaitaikhoan text not null)"; // Xóa trường ảnh đại diện
+                " loaitaikhoan text not null)";
         sqLiteDatabase.execSQL(taiKhoan);
 
         sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'111','Nguyễn Quý Đức','ducnq@gmail.com','0787613866','ha noi',10000,'admin')");
@@ -110,4 +111,5 @@ public class dbVnua extends SQLiteOpenHelper {
         // Tạo lại các bảng
         onCreate(sqLiteDatabase);
     }
+
 }

@@ -31,6 +31,8 @@ import vnua.k66httt.techworld.fragment.frgQuanLySanPham;
 import vnua.k66httt.techworld.fragment.frgTrangChu;
 import vnua.k66httt.techworld.fragment.frgVeChungToi;
 import vnua.k66httt.techworld.fragment.frgThongKe;
+import vnua.k66httt.techworld.fragment.frg_Ve_Chung_Toi;
+import vnua.k66httt.techworld.fragment.frg_lich_su_don_hang;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -78,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.action_qlThongKe) {
                 replaceFragment(new frgThongKe());
             } else if (item.getItemId() == R.id.action_qlVeChungToi) {
-                replaceFragment(new frgVeChungToi());
+                replaceFragment(new frg_Ve_Chung_Toi());
             } else if (item.getItemId() == R.id.action_LichSu) {
-                replaceFragment(new frgLichSuDonHang());
+                replaceFragment(new frg_lich_su_don_hang());
             } else if (item.getItemId() == R.id.action_qlDangXuat) {
                 Intent intent = new Intent(MainActivity.this, man_hinh_dang_nhap.class);
                 startActivity(intent);

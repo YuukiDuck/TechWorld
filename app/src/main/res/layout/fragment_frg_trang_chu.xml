@@ -21,8 +21,9 @@
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="20sp"
                 android:fontFamily="@font/baloothambi2medium"
-                android:text="hi Duc"
-                android:textSize="30sp" />
+                android:text="Welcome to tech world"
+                android:textSize="30sp"
+                />
 
             <EditText
                 android:id="@+id/edtim_kiem"
@@ -35,8 +36,10 @@
                 android:background="@drawable/khung_ed_tim_kiem"
                 android:drawableEnd="@drawable/search_doan"
                 android:hint="Tìm kiếm sản phẩm"
+                android:textColorHint="#333333"
                 android:paddingLeft="30sp"
-                android:paddingRight="10sp" />
+                android:paddingRight="10sp"
+                />
 
 
             <RelativeLayout

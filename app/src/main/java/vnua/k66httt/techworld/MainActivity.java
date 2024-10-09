@@ -11,17 +11,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
 import vnua.k66httt.techworld.databinding.ActivityMainBinding;
 import vnua.k66httt.techworld.fragment.frgGianHang;
 import vnua.k66httt.techworld.fragment.frgGioHang;
-import vnua.k66httt.techworld.fragment.frgLichSuDonHang;
 import vnua.k66httt.techworld.fragment.frgNapTien;
 import vnua.k66httt.techworld.fragment.frgQuanLyDonHang;
 import vnua.k66httt.techworld.fragment.frgQuanLyLoaiSanPham;
@@ -29,9 +25,8 @@ import vnua.k66httt.techworld.fragment.frgQuanLyNapTien;
 import vnua.k66httt.techworld.fragment.frgQuanLyNguoiDung;
 import vnua.k66httt.techworld.fragment.frgQuanLySanPham;
 import vnua.k66httt.techworld.fragment.frgTrangChu;
-import vnua.k66httt.techworld.fragment.frgVeChungToi;
+import vnua.k66httt.techworld.fragment.frg_ve_chung_toi;
 import vnua.k66httt.techworld.fragment.frgThongKe;
-import vnua.k66httt.techworld.fragment.frg_Ve_Chung_Toi;
 import vnua.k66httt.techworld.fragment.frg_lich_su_don_hang;
 
 
@@ -80,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.action_qlThongKe) {
                 replaceFragment(new frgThongKe());
             } else if (item.getItemId() == R.id.action_qlVeChungToi) {
-                replaceFragment(new frg_Ve_Chung_Toi());
+                replaceFragment(new frg_ve_chung_toi());
             } else if (item.getItemId() == R.id.action_LichSu) {
                 replaceFragment(new frg_lich_su_don_hang());
             } else if (item.getItemId() == R.id.action_qlDangXuat) {

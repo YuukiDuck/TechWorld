@@ -7,6 +7,16 @@
     android:padding="20sp">
 
     <TextView
+        android:id="@+id/txtma_loai_san_pham_sua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:fontFamily="@font/baloothambi2semibold"
+        android:text="m"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"

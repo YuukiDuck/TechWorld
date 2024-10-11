@@ -1,4 +1,82 @@
 package vnua.k66httt.techworld.adapter;
 
-public class Adapter_ls_don_hang_chi_tiet {
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+import vnua.k66httt.techworld.Dao.DanhGiaDao;
+import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
+import vnua.k66httt.techworld.Interface.OnAddDanhGia;
+import vnua.k66httt.techworld.Model.DonHangChiTiet;
+import vnua.k66httt.techworld.databinding.ItemLsDonHangChiTietBinding;
+
+public class Adapter_ls_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_ls_don_hang_chi_tiet.ViewHolder> {
+
+    private ArrayList<DonHangChiTiet> list;
+    private Context context;
+    private DonHangChiTietDao dao;
+    private DanhGiaDao dao2;
+    private OnAddDanhGia mAddDanhGia;
+
+    public Adapter_ls_don_hang_chi_tiet(ArrayList<DonHangChiTiet> list, Context context) {
+        this.list = list;
+        this.context = context;
+        dao = new DonHangChiTietDao(context);
+        dao2 = new DanhGiaDao(context);
+    }
+
+    public void setOnAddDanhGia(OnAddDanhGia listener) {
+        mAddDanhGia = listener;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemLsDonHangChiTietBinding binding = ItemLsDonHangChiTietBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new Adapter_ls_don_hang_chi_tiet.ViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.binding.txtDonGia.setText("Giá: " + String.valueOf(list.get(position).getDonGia()));
+        holder.binding.txtmaChiTietDon.setText("Mã chi tiết đơn: " + String.valueOf(list.get(position).getMaChiTietDonHang()));
+        holder.binding.txtMaDonHang.setText("Mã đơn hàng: " + String.valueOf(list.get(position).getMaDonHang()));
+        holder.binding.txtMaSanPham.setText("Mã sản phẩm: " + String.valueOf(list.get(position).getMaSanPham()));
+        holder.binding.txtThanhTien.setText("Thành tiền: " + String.valueOf(list.get(position).getThanhTien()));
+        holder.binding.txtSoLuong.setText("Số lượng: " + String.valueOf(list.get(position).getSoLuong()));
+        holder.binding.txttensanpham.setText("Tên sản phẩm: " + list.get(position).getTenSanPham());
+        Picasso.get().load(list.get(position).getAnhsanpham()).into(holder.binding.imgAnhsp);
+        DonHangChiTiet ct = list.get(position);
+        holder.binding.btnDanhGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mAddDanhGia != null) {
+                    mAddDanhGia.onAddDanhia(list.get(holder.getAdapterPosition()));
+                }
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ItemLsDonHangChiTietBinding binding;
+
+        public ViewHolder(ItemLsDonHangChiTietBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
+
 }

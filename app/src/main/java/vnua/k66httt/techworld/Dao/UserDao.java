@@ -99,6 +99,21 @@ public class UserDao {
         return list;
     }
 
+    public int DeleteUser(int mand) {
+        SQLiteDatabase database = dbVnua.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select * from DONHANG where mataikhoan = ?",new String[]{String.valueOf(mand)});
+        if (cursor.getCount()!= 0){
+            return -1;
+        }
+
+        long check = database.delete("TAIKHOAN", "mataikhoan = ?", new String[]{String.valueOf(mand)});
+        if (check == -1){
+            return 0;
+        }else {
+            return 1;
+        }
+    }
+
     public boolean updateUser(User user) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();

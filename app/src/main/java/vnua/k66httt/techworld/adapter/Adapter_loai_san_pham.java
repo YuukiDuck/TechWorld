@@ -46,7 +46,7 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_loai_san_pham.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtmaloaisanpham.setText("Mã loại sản phẩm: " + String.valueOf(list.get(position).getMaloaisp()));
         holder.txttenloaisanpham.setText("Tên loại sản phẩm: " + list.get(position).getTenloaisp());
         LoaiSanPham lsp = list.get(position);

@@ -1,5 +1,6 @@
 package vnua.k66httt.techworld.Model;
 
+//Slide in ten
 public class Slideiten {
     //lay url
 

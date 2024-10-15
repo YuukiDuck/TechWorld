@@ -174,4 +174,17 @@ public class UserDao {
         long result = database.delete("TAIKHOAN", "mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
         return result != -1 ? 1 : 0;
     }
+
+    public boolean update(int manguoidung, String tennguoidung, int sotien) {
+        SQLiteDatabase db = dbVnua.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("hoten", tennguoidung);
+        values.put("sotien", sotien);
+        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(manguoidung)});
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

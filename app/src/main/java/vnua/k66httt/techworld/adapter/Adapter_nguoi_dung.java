@@ -27,6 +27,12 @@ public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.
     private Context context;
     private UserDao dao;
 
+    public Adapter_nguoi_dung(ArrayList<User> list, Context context) {
+        this.list = list;
+        this.context = context;
+        dao = new UserDao(context);
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,7 +41,7 @@ public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_nguoi_dung.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.txtmaNguoiDung.setText("Mã: " + String.valueOf(list.get(position).getMaTaiKhoan()));
         holder.binding.txtTenNguoiDung.setText("Tên: " + String.valueOf(list.get(position).getHoTen()));
         holder.binding.txtSoDienThoai.setText("Số ĐT: " + list.get(position).getSoDienThoai());

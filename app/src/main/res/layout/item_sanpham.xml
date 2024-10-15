@@ -8,6 +8,17 @@
     android:background="@drawable/khung_item"
     android:orientation="vertical">
 
+    <ImageButton
+        android:id="@+id/btnXoa"
+        android:layout_width="30"
+        android:layout_height="40"
+        android:background="@drawable/khung_item"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="30sp"
+        android:src="@drawable/ic_xoa" />
+
     <ImageView
         android:id="@+id/img_Item_Anh_San_Pham"
         android:layout_width="200sp"
@@ -15,6 +26,15 @@
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/txtma_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:fontFamily="@font/baloothambi2regular"
+        android:text="ma san pham "
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txt_ten_san_pham"
@@ -70,13 +90,14 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/txtten_loai_san_pham2"
+        android:id="@+id/txtSoLuongBanRa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
+
         android:layout_marginTop="5sp"
         android:fontFamily="@font/baloothambi2regular"
-        android:text="ten loai san pham: "
+        android:text="So luong da ban: "
         android:textSize="20sp" />
 
     <TextView

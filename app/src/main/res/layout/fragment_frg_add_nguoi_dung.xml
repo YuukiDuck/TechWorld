@@ -33,12 +33,12 @@
             />
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginHorizontal="10sp"
-            android:id="@+id/in_ten_tai_khoan"
+            android:id="@+id/in_ho_ten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_ten_tai_khoan"
+                android:id="@+id/edt_ho_ten"
                 android:layout_width="match_parent"
                 android:layout_height="45sp"
                 android:layout_marginTop="5sp"

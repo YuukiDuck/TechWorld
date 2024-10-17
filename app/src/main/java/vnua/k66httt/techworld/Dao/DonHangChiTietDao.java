@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import vnua.k66httt.techworld.Database.dbVnua;
 import vnua.k66httt.techworld.Model.DanhGia;
+import vnua.k66httt.techworld.Model.DonHangChiTiet;
 
 public class DonHangChiTietDao {
     private dbVnua dbVnua;
@@ -20,107 +21,70 @@ public class DonHangChiTietDao {
         this.dbVnua = new dbVnua(context);
     }
 
-    public ArrayList<DanhGia> getDanhGiaByMaSanPham(int maSanPham) {
-        ArrayList<DanhGia> list = new ArrayList<>();
-        SQLiteDatabase database = dbVnua.getReadableDatabase();
-        try {
-            String query = "SELECT " +
-                    "DANHGIA.madanhgia, DANHGIA.mataikhoan, TAIKHOAN.hoten, DANHGIA.masanpham, SANPHAM.tensanpham, DANHGIA.danhgia, DANHGIA.nhanxet, DANHGIA.ngaydanhgia " +
-                    "FROM DANHGIA " +
-                    "INNER JOIN TAIKHOAN ON DANHGIA.mataikhoan = TAIKHOAN.mataikhoan " +
-                    "INNER JOIN SANPHAM ON DANHGIA.masanpham = SANPHAM.masanpham " +
-                    "WHERE DANHGIA.masanpham = ?";
-
-            Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(maSanPham)});
-
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    DanhGia danhGia = new DanhGia();
-                    danhGia.setMaDanhGia(cursor.getInt(0));
-                    danhGia.setMaTaiKhoan(cursor.getInt(1));
-                    danhGia.setTenTaiKhoan(cursor.getString(2));
-                    danhGia.setMaSanPham(cursor.getInt(3));
-                    danhGia.setTenSanPham(cursor.getString(4));
-                    danhGia.setDanhGia(cursor.getString(5));
-                    danhGia.setNhanXet(cursor.getString(6));
-                    danhGia.setNgayDanhGia(cursor.getString(7));
-
-                    list.add(danhGia);
-                } while (cursor.moveToNext());
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Lỗi", e);
-        } finally {
-            if (database != null && database.isOpen()) {
-                database.close();
-            }
-        }
-        return list;
-    }
-    public ArrayList<DanhGia> getAllDanhGia() {
-        ArrayList<DanhGia> list = new ArrayList<>();
-        SQLiteDatabase database = dbVnua.getReadableDatabase();
-
-        try {
-            String query = "SELECT " +
-                    "DANHGIA.madanhgia, DANHGIA.mataikhoan, TAIKHOAN.hoten, DANHGIA.masanpham, SANPHAM.tensanpham, DANHGIA.danhgia, DANHGIA.nhanxet, DANHGIA.ngaydanhgia " +
-                    "FROM DANHGIA " +
-                    "INNER JOIN TAIKHOAN ON DANHGIA.mataikhoan = TAIKHOAN.mataikhoan " +
-                    "INNER JOIN SANPHAM ON DANHGIA.masanpham = SANPHAM.masanpham";
-
-            Cursor cursor = database.rawQuery(query, null);
-
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    DanhGia danhGia = new DanhGia();
-                    danhGia.setMaDanhGia(cursor.getInt(0));
-                    danhGia.setMaTaiKhoan(cursor.getInt(1));
-                    danhGia.setTenTaiKhoan(cursor.getString(2));
-                    danhGia.setMaSanPham(cursor.getInt(3));
-                    danhGia.setTenSanPham(cursor.getString(4));
-                    danhGia.setDanhGia(cursor.getString(5));
-                    danhGia.setNhanXet(cursor.getString(6));
-                    danhGia.setNgayDanhGia(cursor.getString(7));
-
-                    list.add(danhGia);
-                } while (cursor.moveToNext());
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Lỗi", e);
-        } finally {
-            if (database != null && database.isOpen()) {
-                database.close();
-            }
-        }
-
-        return list;
-    }
-
-    public boolean addDanhGia(int mataikhoan,int maSanPham, String danhGia, String nhanXet, String ngayDanhGia) {
+    public ArrayList<DonHangChiTiet> getChiTietDonHangByMaDonHang(int maDonHang) {
+        ArrayList<DonHangChiTiet> listChiTiet = new ArrayList<>();
         SQLiteDatabase database = dbVnua.getWritableDatabase();
         try {
-            // Chuẩn bị dữ liệu để chèn vào bảng DANHGIA
-            ContentValues values = new ContentValues();
-            values.put("mataikhoan",mataikhoan);
-            values.put("masanpham", maSanPham);
-            values.put("danhgia", danhGia);
-            values.put("nhanxet", nhanXet);
-            values.put("ngaydanhgia", ngayDanhGia);
-            long result = database.insert("DANHGIA", null, values);
+            String query = "SELECT CHITIETDONHANG.machitietdonhang,CHITIETDONHANG.masanpham,SANPHAM.tensanpham,DONHANG.madonhang,CHITIETDONHANG.soluong,CHITIETDONHANG.dongia, CHITIETDONHANG.thanhtien,SANPHAM.anhsanpham FROM CHITIETDONHANG INNER JOIN DONHANG ON CHITIETDONHANG.madonhang = DONHANG.madonhang INNER JOIN SANPHAM ON CHITIETDONHANG.masanpham = SANPHAM.masanpham WHERE DONHANG.madonhang = ?";
 
-            // Kiểm tra kết quả và trả về true nếu thành công, false nếu thất bại
-            return result != -1;
-        } catch (Exception e) {
-            Log.d(TAG, "Lỗi khi thêm đánh giá", e);
-        } finally {
-            if (database != null && database.isOpen()) {
-                database.close();
+            Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(maDonHang)});
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                do {
+                    DonHangChiTiet chiTietDonHang = new DonHangChiTiet();
+                    chiTietDonHang.setMaChiTietDonHang(cursor.getInt(0));
+                    chiTietDonHang.setMaSanPham(cursor.getInt(1));
+                    chiTietDonHang.setTenSanPham(cursor.getString(2));
+                    chiTietDonHang.setMaDonHang(cursor.getInt(3));
+                    chiTietDonHang.setSoLuong(cursor.getInt(4));
+                    chiTietDonHang.setDonGia(cursor.getInt(5));
+                    chiTietDonHang.setThanhTien(cursor.getInt(6));
+                    chiTietDonHang.setAnhsanpham(cursor.getString(7));
+                    listChiTiet.add(chiTietDonHang);
+                } while (cursor.moveToNext());
             }
+        } catch (Exception e) {
+            Log.e(TAG, "Lỗi", e);
+        } finally {
+            database.close();
         }
-
-        // Trả về false nếu có lỗi xảy ra
-        return false;
+        return listChiTiet;
     }
+
+
+    public boolean xoaDonHang(DonHangChiTiet donHang) {
+        SQLiteDatabase sqLiteDatabase = dbVnua.getWritableDatabase();
+        long check = sqLiteDatabase.delete("CHITIETDONHANG", "machitietdonhang = ?", new String[]{String.valueOf(donHang.getMaChiTietDonHang())});
+        return check > 0;
+
+    }
+
+    public boolean insertDonHangChiTiet(DonHangChiTiet donHangChiTiet) {
+        SQLiteDatabase sqLiteDatabase = dbVnua.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("madonhang", donHangChiTiet.getMaDonHang());
+        values.put("masanpham", donHangChiTiet.getMaSanPham());
+        values.put("soluong", donHangChiTiet.getSoLuong());
+        values.put("dongia", donHangChiTiet.getDonGia());
+        values.put("thanhtien", donHangChiTiet.getThanhTien());
+
+        long check = sqLiteDatabase.insert("CHITIETDONHANG", null, values);
+        return check > 0;
+    }
+
+    public boolean updateDonHangChiTiet(DonHangChiTiet donHangChiTiet) {
+        SQLiteDatabase sqLiteDatabase = dbVnua.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("madonhang", donHangChiTiet.getMaDonHang());
+        values.put("masanpham", donHangChiTiet.getMaSanPham());
+        values.put("soluong", donHangChiTiet.getSoLuong());
+        values.put("dongia", donHangChiTiet.getDonGia());
+        values.put("thanhtien", donHangChiTiet.getThanhTien());
+
+        long check = sqLiteDatabase.update("CHITIETDONHANG", values, "machitietdonhang = ?", new String[]{String.valueOf(donHangChiTiet.getMaChiTietDonHang())});
+        return check > 0;
+    }
+
+
 }

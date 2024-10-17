@@ -187,4 +187,15 @@ public class UserDao {
             return true;
         }
     }
+
+    public boolean updateSoTien(int maTaiKhoan, int soTienMoi) {
+        SQLiteDatabase db = dbVnua.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("sotien", soTienMoi);
+
+        long result = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
+
+        return result != -1;
+    }
+
 }

@@ -10,8 +10,8 @@
 
     <ImageButton
         android:id="@+id/btnXoa"
-        android:layout_width="30"
-        android:layout_height="40"
+        android:layout_width="30sp"
+        android:layout_height="40sp"
         android:background="@drawable/khung_item"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"

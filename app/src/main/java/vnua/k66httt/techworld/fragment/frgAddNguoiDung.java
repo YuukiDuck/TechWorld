@@ -15,7 +15,8 @@ import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.FragmentFrgAddNguoiDungBinding;
 
 public class frgAddNguoiDung extends Fragment {
-    private frgAddNguoiDung() {
+
+    public frgAddNguoiDung() {
 
     }
 

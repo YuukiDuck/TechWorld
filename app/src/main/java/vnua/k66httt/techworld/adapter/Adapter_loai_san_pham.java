@@ -30,7 +30,7 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
     private final ArrayList<LoaiSanPham> list;
     LoaiSanPhamDao dao;
 
-    public Adapter_loai_san_pham(Context context, ArrayList<LoaiSanPham> list) {
+    public Adapter_loai_san_pham( ArrayList<LoaiSanPham> list,Context context) {
         this.context = context;
         this.list = list;
         dao = new LoaiSanPhamDao(context);

@@ -38,6 +38,7 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
         String urlAnh = preferences.getString("anhtaikhoan", "");
         dao = new UserDao(this);
         user = dao.getNguoiDungByMaTaiKhoan(maTK);
+        binding.edtTenDangNhapDangKy.setText(tenDN);
         binding.edtNhapHoTen.setText(hoten);
         binding.edtNhapEmailDangKy.setText(email);
         binding.edtNhapDiaChiDangKy.setText(diachi);
@@ -53,43 +54,54 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
         binding.btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validHoTen();
-                validDiaChi();
-                validEmail();
-                validSoDienThoai();
+                validTenDangNhap();
                 validMatKhauCu();
                 validNhapLaiMatKhauMoi();
-
-                if (isInputValid()) {
-                    user.setMatKhau(matkhaumoi);
-                    user.setHoTen(hoten);
-                    user.setEmail(email);
-                    user.setDiaChi(diachi);
-                    user.setSoDienThoai(sodienthoai);
-
-                    boolean result = dao.updatekhachhang(user);
-                    if (result) {
-                        list.clear();
-                        list = dao.getAllUsers();
-                        Intent intent = new Intent(sua_thong_tin_nguoi_dung.this, man_hinh_dang_nhap.class);
-                        startActivity(intent);
-                        Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đổi thông tin thành công", Toast.LENGTH_SHORT).show();
+                validEmail();
+                validDiaChi();
+                validHoTen();
+                validSoDienThoai();
+                if (binding.edtTenDangNhapDangKy.getError() == null &&
+                        binding.edmatKhau.getError() == null &&
+                        binding.edmatKhauMoi.getError() == null &&
+                        binding.edtNhapLaiPassMoi.getError() == null &&
+                        binding.edtNhapHoTen.getError() == null &&
+                        binding.edtNhapEmailDangKy.getError() == null &&
+                        binding.edtNhapDiaChiDangKy.getError() == null &&
+                        binding.edtNhapSDT.getError() == null ){
+                    if (matkhaucu.equals(matkhau)) {
+                        user.setTenDangNhap(tenDangNhap);
+                        user.setMatKhau(matkhaumoi);
+                        user.setHoTen(hoten);
+                        user.setEmail(email);
+                        user.setDiaChi(diachi);
+                        user.setSoDienThoai(sodienthoai);
+                        boolean result = dao.updatekhachhang(user);
+                        if (result) {
+                            list.clear();
+                            list = dao.getAllUsers();
+                            Intent intent = new Intent(sua_thong_tin_nguoi_dung.this, man_hinh_dang_nhap.class);
+                            startActivity(intent);
+                            Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đổi thông tin thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Đăng ký thất bại
+                            Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(sua_thong_tin_nguoi_dung.this, "Đổi thông tin thất bại", Toast.LENGTH_SHORT).show();
+                        binding.edmatKhau.setError("mật khẩu cũ không trùng khớp");
                     }
                 }
             }
         });
     }
 
-    private boolean isInputValid() {
-        return binding.edmatKhau.getError() == null &&
-                binding.edmatKhauMoi.getError() == null &&
-                binding.edtNhapLaiPassMoi.getError() == null &&
-                binding.edtNhapHoTen.getError() == null &&
-                binding.edtNhapEmailDangKy.getError() == null &&
-                binding.edtNhapDiaChiDangKy.getError() == null &&
-                binding.edtNhapSDT.getError() == null;
+    private void validTenDangNhap() {
+        tenDangNhap = binding.edtTenDangNhapDangKy.getText().toString();
+        if (tenDangNhap.isEmpty()) {
+            binding.edtTenDangNhapDangKy.setError("Vui lòng nhập tên đăng nhập");
+        } else {
+            binding.edtTenDangNhapDangKy.setError(null);
+        }
     }
 
     private void validHoTen() {

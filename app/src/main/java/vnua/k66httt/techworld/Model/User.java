@@ -2,6 +2,7 @@ package vnua.k66httt.techworld.Model;
 
 public class User {
     private int maTaiKhoan;
+    private String tenDangNhap;
     private String hoTen;
     private String gioiTinh;
     private String matKhau;
@@ -11,8 +12,9 @@ public class User {
     private int soTien;
     private String loaiTaiKhoan;
 
-    public User(String hoTen, String soDienThoai, String gioiTinh, String matKhau, String email, String diaChi, int soTien, String loaiTaiKhoan) {
+    public User(String hoTen, String tenDangNhap, String soDienThoai, String gioiTinh, String matKhau, String email, String diaChi, int soTien, String loaiTaiKhoan) {
         this.hoTen = hoTen;
+        this.tenDangNhap = tenDangNhap;
         this.gioiTinh = gioiTinh;
         this.matKhau = matKhau;
         this.soDienThoai = soDienThoai;
@@ -54,6 +56,14 @@ public class User {
 
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
+    }
+
+    public String getTenDangNhap() {
+        return tenDangNhap;
+    }
+
+    public void setTenDangNhap(String tenDangNhap) {
+        this.tenDangNhap = tenDangNhap;
     }
 
     public String getSoDienThoai() {

@@ -1,6 +1,5 @@
 package vnua.k66httt.techworld.adapter;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,7 @@ import vnua.k66httt.techworld.databinding.ItemGianHangBinding;
 public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.ViewHolder> {
 
     private Context context;
-    private  ArrayList<SanPham> list;
+    private ArrayList<SanPham> list;
     SanPhamDao dao;
     private ArrayList<Boolean> isClickThemVaoGio;
 
@@ -35,18 +34,18 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
 
     }
 
-    public void clearData(){
+    public void clearData() {
         list.clear();
         notifyDataSetChanged();
     }
 
-    public void setData(ArrayList<SanPham> newList){
+    public void setData(ArrayList<SanPham> newList) {
         list.clear();
         list.addAll(newList);
         notifyDataSetChanged();
     }
 
-    public void addAll(ArrayList<SanPham> data){
+    public void addAll(ArrayList<SanPham> data) {
         list.addAll(data);
         notifyDataSetChanged();
     }
@@ -55,13 +54,13 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
     private OnItemClick mListener;
 
     // Phương thức thiết lập
-    public void setOnItemCLickListener(OnItemClick listener){
+    public void setOnItemCLickListener(OnItemClick listener) {
         mListener = listener;
     }
 
     private OnAddToCart mAddToCartClickListener;
 
-    public void setOnAddToCartClickListener (OnAddToCart listener){
+    public void setOnAddToCartClickListener(OnAddToCart listener) {
         mAddToCartClickListener = listener;
     }
 
@@ -74,14 +73,14 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
 
     @NonNull
     @Override
-    public Adapter_gian_hang.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemGianHangBinding binding = ItemGianHangBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemGianHangBinding binding = ItemGianHangBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull Adapter_gian_hang.ViewHolder holder, int position) {
-        SanPham sanPham =list.get(position);
+        SanPham sanPham = list.get(position);
         //thiết lập dữ liệu
         holder.binding.txttenSp.setText("Tên sp:" + list.get(position).getTensanpham());
         holder.binding.txtgiaSp.setText("Giá sp:" + list.get(position).getTensanpham());
@@ -90,7 +89,7 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
         Picasso.get().load(list.get(position).getAnhSanPham()).into(holder.binding.imgAnhspGianHang);
 
         //Kiểm tra trạng thái và nút thêm giỏ hàng
-        if (list.get(position).getSoluong() == 0){
+        if (list.get(position).getSoluong() == 0) {
             holder.binding.btnThemvaogio.setVisibility(ViewGroup.GONE);
             holder.binding.txtHetHang.setVisibility(View.VISIBLE);
         } else {
@@ -102,7 +101,14 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
                 }
             });
         }
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onItemClick(holder.getAdapterPosition());
+                }
+            }
+        });
     }
 
     @Override
@@ -110,10 +116,10 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ItemGianHangBinding binding;
 
-        public ViewHolder(ItemGianHangBinding binding){
+        public ViewHolder(ItemGianHangBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

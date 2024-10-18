@@ -7,8 +7,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.squareup.picasso.Picasso;
-
 import vnua.k66httt.techworld.databinding.ActivityProfileBinding;
 
 public class Profile extends AppCompatActivity {
@@ -22,7 +20,7 @@ public class Profile extends AppCompatActivity {
         setContentView(binding.getRoot());
         SharedPreferences preferences = getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
         int mand = preferences.getInt("mataikhoan", 0);
-        String tendangnhap = preferences.getString("tendangnhap", "");
+        String tenDN = preferences.getString("tendangnhap", "");
         String matkhau = preferences.getString("matkhau", "");
         String hoten = preferences.getString("hoten", "");
         String email = preferences.getString("email", "");
@@ -33,6 +31,8 @@ public class Profile extends AppCompatActivity {
         binding.hiName.setText("Hi" + hoten);
         binding.txtPMaNguoiDung.setText("Mẫ tài khoản:" + String.valueOf(mand));
         binding.txtPHoTen.setText("Họ tên:" + hoten);
+        binding.txtPTenDangNhap.setText("Tên đăng nhập: " + tenDN);
+        binding.txtPEmail.setText("Email: " + email);
         binding.txtPSoDienThoai.setText("Số điện thoại: " + sodienthoai);
         binding.txtPDiaChi.setText("Địa chỉ: " + diachi);
         binding.txtPSoTien.setText("Số tiền hiện có: " + String.valueOf(tien));

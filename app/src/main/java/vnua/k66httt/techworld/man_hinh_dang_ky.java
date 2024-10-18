@@ -12,46 +12,46 @@ import vnua.k66httt.techworld.databinding.ActivityManHinhDangKyBinding;
 
 public class man_hinh_dang_ky extends AppCompatActivity {
     ActivityManHinhDangKyBinding binding;
-    User user  = new User();
+
+    User nd = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_man_hinh_dang_ky);
         binding = ActivityManHinhDangKyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         binding.imgTroVeDangNhap.setOnClickListener(view -> {
             Intent intent = new Intent(man_hinh_dang_ky.this, man_hinh_dang_nhap.class);
             startActivity(intent);
         });
-
         binding.btnDongY.setOnClickListener(view -> {
             if (validateDangKy()) {
                 clickDangKy();
             }
+
         });
     }
 
     private void clickDangKy() {
         // Lấy thông tin từ các trường nhập liệu
-        user.setMatKhau(binding.edtNhapPassDangKy.getText().toString().trim());
-        user.setHoTen(binding.edtNhapHoTenDangKy.getText().toString());
-        user.setSoDienThoai(binding.edtNhapSDTDangKy.getText().toString().trim());
-        user.setDiaChi(binding.edtNhapDiaChiDangKy.getText().toString());
-        user.setEmail(binding.edtNhapEmailDangKy.getText().toString().trim());
-        user.setSoTien(0); // Đặt số tiền mặc định khi đăng ký
-        user.setLoaiTaiKhoan("khachhang"); // Đặt loại tài khoản mặc định khi đăng ký
-            user.setGioiTinh(binding.rgGioiTinh.getCheckedRadioButtonId() == R.id.rbnam ? "Nam" : "Nữ");
+        nd.setTenDangNhap(binding.edtTenDangNhapDangKy.getText().toString().trim());
+        nd.setMatKhau(binding.edtNhapPassDangKy.getText().toString().trim());
+        nd.setHoTen(binding.edtNhapHoTenDangKy.getText().toString());
+        nd.setSoDienThoai(binding.edtNhapSDTDangKy.getText().toString().trim());
+        nd.setDiaChi(binding.edtNhapDiaChiDangKy.getText().toString());
+        nd.setEmail(binding.edtNhapEmailDangKy.getText().toString().trim());
+        nd.setSoTien(0); // Đặt số tiền mặc định khi đăng ký
+        nd.setLoaiTaiKhoan("user"); // Đặt loại tài khoản mặc định khi đăng ký
 
         // Thực hiện đăng ký bằng cách thêm người dùng vào cơ sở dữ liệu
         UserDao dao = new UserDao(man_hinh_dang_ky.this);
-        boolean result = dao.checkDangKy(user);
+        boolean result = dao.checkDangKy(nd);
 
         if (result) {
             // Đăng ký thành công
             Intent intent = new Intent(man_hinh_dang_ky.this, man_hinh_dang_nhap.class);
             startActivity(intent);
-            finish();
         } else {
             // Đăng ký thất bại
             Toast.makeText(man_hinh_dang_ky.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
@@ -60,14 +60,23 @@ public class man_hinh_dang_ky extends AppCompatActivity {
 
     private boolean validateDangKy() {
         UserDao dao = new UserDao(man_hinh_dang_ky.this);
+        String tenDangNhap = binding.edtTenDangNhapDangKy.getText().toString().trim();
         String matKhau = binding.edtNhapPassDangKy.getText().toString().trim();
         String nhapLaiMatKhau = binding.edtNhapLaiPassDangKy.getText().toString().trim();
         String hoTen = binding.edtNhapHoTenDangKy.getText().toString().trim();
         String sdt = binding.edtNhapSDTDangKy.getText().toString().trim();
         String diaChi = binding.edtNhapDiaChiDangKy.getText().toString().trim();
         String email = binding.edtNhapEmailDangKy.getText().toString().trim();
-        String gioiTinh = binding.rgGioiTinh.getCheckedRadioButtonId() == -1 ? null : "đã chọn"; // Kiểm tra giới tính
         boolean isValid = true;
+        if (tenDangNhap.isEmpty()) {
+            binding.tipLTenDangNhapDangKy.setError("Vui lòng nhập tên đăng nhập");
+            isValid = false;
+        } else if (dao.tenDangNhapDaTonTai(tenDangNhap)) {
+            binding.tipLTenDangNhapDangKy.setError("Tên đăng nhập đã tồn tại, vui lòng chọn tên khác");
+            return false;
+        } else {
+            binding.tipLTenDangNhapDangKy.setError(null);
+        }
 
         if (matKhau.isEmpty()) {
             binding.tipLNhapPassDangKy.setError("Vui lòng nhập mật khẩu");
@@ -120,12 +129,8 @@ public class man_hinh_dang_ky extends AppCompatActivity {
             binding.tiLNhapEmailDangKy.setError(null);
         }
 
-        if (gioiTinh == null) {
-            Toast.makeText(this, "Vui lòng chọn giới tính", Toast.LENGTH_SHORT).show();
-            isValid = false;
-        }
-
         return isValid;
+
     }
 
     private boolean isValidPhoneNumber(String phoneNumber) {
@@ -133,8 +138,9 @@ public class man_hinh_dang_ky extends AppCompatActivity {
         return phoneNumber.matches(regex);
     }
 
+    // Hàm kiểm tra định dạng email
     private boolean isValidEmail(String email) {
-        String regex = "[a-zA-Z0-9._-]+@gmail\\.com";
+        String regex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+(\\.+[a-z]+)?";
         return email.matches(regex);
     }
 }

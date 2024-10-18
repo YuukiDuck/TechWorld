@@ -17,17 +17,17 @@ public class dbVnua extends SQLiteOpenHelper {
         // 1. Bảng tài khoản
         String taiKhoan = "CREATE TABLE TAIKHOAN(" +
                 "mataikhoan integer primary key autoincrement," +
-                " hoten text not null," +
+                " tendangnhap text not null," +
                 " matkhau text not null," +
+                " hoten text not null," +
                 " email text not null," +
-                " sodienthoai interger not null," +
+                " sodienthoai text not null," +
                 " diachi text not null," +
                 " sotien integer not null," +
-                " loaitaikhoan text not null)";
+                "loaitaikhoan text not null)";
         sqLiteDatabase.execSQL(taiKhoan);
-
-        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'111','Nguyễn Quý Đức','nqduc@gmail.com','0787613866','ha noi',10000,'admin')");
-        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'111','Phạm Đức Hoàng','pdhoang@gmail.com','0787613866','ha noi',10000,'user')");
+        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'duc','123','Nguyễn Quý Đức','nqduc@gmail.com','0787613866','Ha Noi',10000,'admin')");
+        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'hoang','123','Phạm Đức Hoàng','pdhoang@gmail.com','0787613866','Nam Dinh',10000,'user')");
 
         // 2. Bảng loại sản phẩm
         String loaiSanPham = "CREATE TABLE LOAISANPHAM(" +
@@ -103,6 +103,10 @@ public class dbVnua extends SQLiteOpenHelper {
 
         // Tạo lại các bảng
         onCreate(sqLiteDatabase);
+    }
+
+    public void resetDatabase(Context context) {
+        context.deleteDatabase("database_name"); // Xóa cơ sở dữ liệu
     }
 
 }

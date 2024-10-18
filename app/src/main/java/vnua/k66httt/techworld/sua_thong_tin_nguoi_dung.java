@@ -19,30 +19,29 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
     UserDao dao;
     User user;
     private ArrayList<User> list = new ArrayList<>();
-    String email, matkhaucu, matkhaumoi, nhaplaimatkhaumoi, hoten, diachi, sodienthoai;
+    String tenDangNhap, email,matkhau , matkhaucu, matkhaumoi, nhaplaimatkhaumoi, hoten, diachi, sodienthoai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sua_thong_tin_nguoi_dung);
         binding = ActivitySuaThongTinNguoiDungBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         SharedPreferences preferences = getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
-        int maTK = preferences.getInt("mataikhoan", 0);
+        int maTK = preferences.getInt("mataikhoan",0);
+        String tenDN = preferences.getString("tendangnhap", "");
+        matkhau = preferences.getString("matkhau", "");
+        String hoten = preferences.getString("hoten", "");
+        String email = preferences.getString("email", "");
+        String sodienthoai = preferences.getString("sodienthoai", "");
+        String diachi = preferences.getString("diachi", "");
+        String urlAnh = preferences.getString("anhtaikhoan", "");
         dao = new UserDao(this);
-
-        // Lấy thông tin người dùng
-        user = dao.getUserByMaTaiKhoan(maTK);
-        if (user != null) {
-            binding.edtNhapHoTen.setText(user.getHoTen());
-            binding.edtNhapDiaChiDangKy.setText(user.getDiaChi());
-            binding.edtNhapEmailDangKy.setText(user.getEmail());
-            binding.edtNhapSDT.setText(user.getSoDienThoai());
-        } else {
-            Toast.makeText(this, "Không tìm thấy người dùng", Toast.LENGTH_SHORT).show();
-            finish(); // Kết thúc activity nếu không tìm thấy người dùng
-            return;
-        }
+        user = dao.getNguoiDungByMaTaiKhoan(maTK);
+        binding.edtNhapHoTen.setText(hoten);
+        binding.edtNhapEmailDangKy.setText(email);
+        binding.edtNhapDiaChiDangKy.setText(diachi);
+        binding.edtNhapSDT.setText(sodienthoai);
 
         binding.imgTroVeDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override

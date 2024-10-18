@@ -27,7 +27,7 @@ public class dbVnua extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(taiKhoan);
 
         sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(1,'111','Nguyễn Quý Đức','nqduc@gmail.com','0787613866','ha noi',10000,'admin')");
-        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'111','Phạm Đức Hoàng','pdhoang@gmail.com','0787613866','ha noi',10000,'admin')");
+        sqLiteDatabase.execSQL("INSERT INTO TAIKHOAN VALUES(2,'111','Phạm Đức Hoàng','pdhoang@gmail.com','0787613866','ha noi',10000,'user')");
 
         // 2. Bảng loại sản phẩm
         String loaiSanPham = "CREATE TABLE LOAISANPHAM(" +

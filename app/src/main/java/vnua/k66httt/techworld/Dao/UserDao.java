@@ -198,4 +198,31 @@ public class UserDao {
         return result != -1;
     }
 
+    public User getNguoiDungByMaTaiKhoan(int maTaiKhoan) {
+        SQLiteDatabase db = dbVnua.getReadableDatabase();
+        User nd = null;
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                nd = new User();
+                nd.setMaTaiKhoan(cursor.getInt(0));
+                nd.setMatKhau(cursor.getString(2));
+                nd.setHoTen(cursor.getString(3));
+                nd.setEmail(cursor.getString(4));
+                nd.setSoDienThoai(cursor.getString(5));
+                nd.setDiaChi(cursor.getString(6));
+                nd.setSoTien(cursor.getInt(7));
+                nd.setLoaiTaiKhoan(cursor.getString(8));
+            }
+
+            cursor.close();
+        } catch (Exception e) {
+            Log.e(TAG, "Lỗi", e);
+        }
+
+        return nd;
+    }
 }

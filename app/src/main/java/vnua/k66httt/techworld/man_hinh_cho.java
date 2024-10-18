@@ -11,10 +11,11 @@ public class man_hinh_cho extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_man_hinh_cho_1);
+        setContentView(R.layout.activity_man_hinh_cho);
         Handler handler = new Handler();
         if (PreferenceUtils.isFirstRun(this)) {
-            // Nếu là lần đầu, hiển thị 3 màn hình chờ
+            // Nếu là lần đầu, hiển thị 3 màn hình
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -24,7 +25,7 @@ public class man_hinh_cho extends AppCompatActivity {
                 }
             }, 1000);
         } else {
-            // Nếu không phải lần đầu, chuyển sang màn hình đăng nhập
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -34,5 +35,9 @@ public class man_hinh_cho extends AppCompatActivity {
                 }
             }, 1000);
         }
+
+
+
     }
+
 }

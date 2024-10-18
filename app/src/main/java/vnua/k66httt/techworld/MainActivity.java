@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         String loaiTaiKhoan = sharedPreferences.getString("loaitaikhoan", "");
         int sotien = sharedPreferences.getInt("sotien", 0);
         Menu menu = navigationView.getMenu();
+
         if (!loaiTaiKhoan.equals("admin")) {
             menu.findItem(R.id.action_qlnguoidung).setVisible(false);
             menu.findItem(R.id.action_qlsanpham).setVisible(false);

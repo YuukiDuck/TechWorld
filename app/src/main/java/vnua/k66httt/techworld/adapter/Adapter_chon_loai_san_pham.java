@@ -15,7 +15,7 @@ import vnua.k66httt.techworld.Interface.OnButtonLoaiSP;
 import vnua.k66httt.techworld.Model.LoaiSanPham;
 import vnua.k66httt.techworld.databinding.ItemRcvChonLoaiSanPhamBinding;
 
-public class Adapter_chon_loai_san_pham extends RecyclerView.Adapter<Adapter_chon_loai_san_pham.ViewHolder> {
+public class Adapter_chon_loai_san_pham extends RecyclerView.Adapter<Adapter_chon_loai_san_pham.ViewHodle> {
     private ArrayList<LoaiSanPham> list;
     private LoaiSanPhamDao dao;
     private Context context;
@@ -42,14 +42,14 @@ public class Adapter_chon_loai_san_pham extends RecyclerView.Adapter<Adapter_cho
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHodle onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemRcvChonLoaiSanPhamBinding binding = ItemRcvChonLoaiSanPhamBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
-        return new ViewHolder(binding);
+        return new ViewHodle(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHodle holder, int position) {
         holder.binding.btnChonLoaiSanPham.setText(list.get(position).getTenloaisp());
         holder.binding.btnChonLoaiSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +67,10 @@ public class Adapter_chon_loai_san_pham extends RecyclerView.Adapter<Adapter_cho
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHodle extends RecyclerView.ViewHolder {
         ItemRcvChonLoaiSanPhamBinding binding;
 
-        public ViewHolder(@NonNull ItemRcvChonLoaiSanPhamBinding binding) {
+        public ViewHodle(@NonNull ItemRcvChonLoaiSanPhamBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

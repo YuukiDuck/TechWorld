@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_coin"
                 android:fontFamily="@font/baloothambi2medium"
-                android:text="coin 100"
+                android:text="coin 1"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:gravity="center"

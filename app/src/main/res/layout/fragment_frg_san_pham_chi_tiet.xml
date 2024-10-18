@@ -108,7 +108,7 @@
                 android:layout_marginTop="3sp"
                 android:layout_toRightOf="@+id/imganhsp"
                 android:drawableEnd="@drawable/ic_coin"
-                android:text="Giá: 35000000"
+                android:text="Giá: 3500"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="20sp" />

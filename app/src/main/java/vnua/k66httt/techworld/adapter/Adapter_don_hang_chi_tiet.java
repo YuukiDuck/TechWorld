@@ -14,7 +14,7 @@ import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.databinding.ItemDonHangChiTietBinding;
 
-public class Adapter_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_don_hang_chi_tiet.ViewHolder> {
+public class Adapter_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_don_hang_chi_tiet.ViewHo> {
 
     private ArrayList<DonHangChiTiet> list;
     private Context context;
@@ -30,13 +30,13 @@ public class Adapter_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_don_
 
     @NonNull
     @Override
-    public Adapter_don_hang_chi_tiet.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemDonHangChiTietBinding binding = ItemDonHangChiTietBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(binding);
+        return new ViewHo(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_don_hang_chi_tiet.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHo holder, int position) {
         holder.binding.txtDonGia.setText("Giá:" + String.valueOf(list.get(position).getDonGia()));
         holder.binding.txtSoLuong.setText("Mã chi tiết đơn:" + String.valueOf(list.get(position).getDonGia()));
         holder.binding.txtMaDonHang.setText("Mã đơn hàng:" + String.valueOf(list.get(position).getDonGia()));
@@ -52,10 +52,10 @@ public class Adapter_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_don_
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHo extends RecyclerView.ViewHolder {
         ItemDonHangChiTietBinding binding;
 
-        public ViewHolder(ItemDonHangChiTietBinding binding) {
+        public ViewHo(ItemDonHangChiTietBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

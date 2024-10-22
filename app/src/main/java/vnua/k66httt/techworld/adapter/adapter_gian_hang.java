@@ -18,55 +18,52 @@ import vnua.k66httt.techworld.Interface.OnItemClick;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.databinding.ItemGianHangBinding;
 
-public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.ViewHolder> {
-
+public class adapter_gian_hang extends RecyclerView.Adapter<adapter_gian_hang.ViewHolder> {
     private Context context;
     private ArrayList<SanPham> list;
     SanPhamDao dao;
     private ArrayList<Boolean> isClickThemVaoGio;
 
 
-    public Adapter_gian_hang(Context context, ArrayList<SanPham> list) {
+    public adapter_gian_hang(Context context, ArrayList<SanPham> list) {
         this.context = context;
         this.list = list;
 
         dao = new SanPhamDao(context);
 
     }
-
-    public void clearData() {
-        list.clear();
-        notifyDataSetChanged();
-    }
-
     public void setData(ArrayList<SanPham> newList) {
         list.clear();
         list.addAll(newList);
         notifyDataSetChanged();
     }
-
-    public void addAll(ArrayList<SanPham> data) {
-        list.addAll(data);
+    public void clearData() {
+        list.clear();
         notifyDataSetChanged();
     }
 
-    //Biến để lưu trữ listener
+    public void addAlll(ArrayList<SanPham> data) {
+        list.addAll(data);
+        notifyDataSetChanged();
+    }
+    // Biến để lưu trữ listener
     private OnItemClick mListener;
 
-    // Phương thức thiết lập
-    public void setOnItemCLickListener(OnItemClick listener) {
+    // Phương thức để thiết lập listener
+    public void setOnItemClickListener(OnItemClick listener) {
         mListener = listener;
     }
 
     private OnAddToCart mAddToCartClickListener;
 
+
+
     public void setOnAddToCartClickListener(OnAddToCart listener) {
         mAddToCartClickListener = listener;
     }
-
     public SanPham getViTriSanPham(int position) {
         if (position >= 0 && position < list.size()) {
-            return list.get(position);
+            return  list.get(position);
         }
         return null;
     }
@@ -75,32 +72,34 @@ public class Adapter_gian_hang extends RecyclerView.Adapter<Adapter_gian_hang.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemGianHangBinding binding = ItemGianHangBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return null;
+        return new ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_gian_hang.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SanPham sanPham = list.get(position);
-        //thiết lập dữ liệu
-        holder.binding.txttenSp.setText("Tên sp:" + list.get(position).getTensanpham());
-        holder.binding.txtgiaSp.setText("Giá sp:" + list.get(position).getTensanpham());
-        holder.binding.txttrangThaiSanPham.setText("Tồn kho:" + list.get(position).getTensanpham());
-        holder.binding.txtSoluongdaban.setText("Số lượng đã bán:" + list.get(position).getTensanpham());
+        holder.binding.txttenMay.setText("Tên sp:" + list.get(position).getTensanpham());
+        holder.binding.txtgiaMay.setText("Giá sp:" + String.valueOf(list.get(position).getGia()));
+        holder.binding.txttrangThaiSanPham.setText("Tồn kho: "+String.valueOf(list.get(position).getSoluong()));
+        holder.binding.txtSoluongdaban.setText("Số lượng đã bán: "+ list.get(position).getSoLuotBanRa());
         Picasso.get().load(list.get(position).getAnhSanPham()).into(holder.binding.imgAnhspGianHang);
 
-        //Kiểm tra trạng thái và nút thêm giỏ hàng
         if (list.get(position).getSoluong() == 0) {
-            holder.binding.btnThemvaogio.setVisibility(ViewGroup.GONE);
+            holder.binding.btnThemvaogio.setVisibility(View.GONE);
             holder.binding.txtHetHang.setVisibility(View.VISIBLE);
         } else {
             holder.binding.btnThemvaogio.setVisibility(View.VISIBLE);
             holder.binding.txtHetHang.setVisibility(View.GONE);
-            holder.binding.btnThemvaogio.setOnClickListener(View -> {
-                if (mAddToCartClickListener != null) {
-                    mAddToCartClickListener.onAddToCartClick(list.get(holder.getAdapterPosition()));
+            holder.binding.btnThemvaogio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mAddToCartClickListener != null) {
+                        mAddToCartClickListener.onAddToCartClick(list.get(holder.getAdapterPosition()));
+                    }
                 }
             });
         }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

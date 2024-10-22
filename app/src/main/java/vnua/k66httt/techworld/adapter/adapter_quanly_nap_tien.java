@@ -13,37 +13,36 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
+import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.DialogSuaNapTienBinding;
 import vnua.k66httt.techworld.databinding.ItemQuanlynaptienBinding;
 
-public class Adapter_quanly_nap_tien extends RecyclerView.Adapter<Adapter_quanly_nap_tien.ViewHolder> {
-
-    private ArrayList<User> list;
+public class adapter_quanly_nap_tien extends RecyclerView.Adapter<adapter_quanly_nap_tien.ViewH> {
+    private ArrayList<NguoiDung> list;
     private Context context;
-    UserDao dao;
+    NguoiDungDao dao;
 
-    public Adapter_quanly_nap_tien(ArrayList<User> list, Context context) {
+    public adapter_quanly_nap_tien(ArrayList<NguoiDung> list, Context context) {
         this.list = list;
         this.context = context;
-        dao = new UserDao(context);
+        dao = new NguoiDungDao(context);
     }
 
     @NonNull
     @Override
-    public Adapter_quanly_nap_tien.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemQuanlynaptienBinding binding = ItemQuanlynaptienBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(binding);
+    public ViewH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemQuanlynaptienBinding biding = ItemQuanlynaptienBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewH(biding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewH holder, int position) {
         holder.binding.txtmaNguoiDung.setText("Mã tài khoản: " + String.valueOf(list.get(position).getMaTaiKhoan()));
         holder.binding.txttenNguoiDung.setText("Tên người dùng: " + list.get(position).getHoTen());
         holder.binding.txtsotien.setText("Số tiền: " + String.valueOf(list.get(position).getSoTien()));
-        User nd = list.get(position);
+        NguoiDung nd = list.get(position);
         holder.binding.btnchinhsua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,19 +102,17 @@ public class Adapter_quanly_nap_tien extends RecyclerView.Adapter<Adapter_quanly
         });
     }
 
-
-@Override
-public int getItemCount() {
-    return list.size();
-}
-
-public class ViewHolder extends RecyclerView.ViewHolder {
-    ItemQuanlynaptienBinding binding;
-
-    public ViewHolder(@NonNull ItemQuanlynaptienBinding binding) {
-        super(binding.getRoot());
-        this.binding = binding;
+    @Override
+    public int getItemCount() {
+        return list.size();
     }
-}
 
+    public class ViewH extends RecyclerView.ViewHolder {
+        ItemQuanlynaptienBinding binding;
+
+        public ViewH(@NonNull ItemQuanlynaptienBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
 }

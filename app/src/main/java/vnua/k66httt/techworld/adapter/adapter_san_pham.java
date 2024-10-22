@@ -26,14 +26,13 @@ import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.DialogSuasanphamBinding;
 import vnua.k66httt.techworld.databinding.ItemSanphamBinding;
 
-public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.ViewHolder> {
-
+public class adapter_san_pham extends RecyclerView.Adapter<adapter_san_pham.viewH> {
     private ArrayList<SanPham> list;
     private Context context;
     private ArrayList<HashMap<String, Object>> listHM;
     SanPhamDao dao;
 
-    public Adapter_san_pham(ArrayList<SanPham> list, Context context, ArrayList<HashMap<String, Object>> listHM) {
+    public adapter_san_pham(ArrayList<SanPham> list, Context context, ArrayList<HashMap<String, Object>> listHM) {
         this.list = list;
         this.context = context;
         this.listHM = listHM;
@@ -42,35 +41,35 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemSanphamBinding binding = ItemSanphamBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        return new ViewHolder(binding);
+    public viewH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemSanphamBinding txt = ItemSanphamBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new viewH(txt);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.binding.txtmaSanPham.setText("MÃ sản phẩm: " + String.valueOf(list.get(position).getMasanpham()));
-        holder.binding.txtTenSanPham.setText("Tên sản phẩm: " + list.get(position).getTensanpham());
-        holder.binding.txtgiaSanPham.setText("Giá sản phẩm: " + String.valueOf(list.get(position).getGia()));
-        holder.binding.txtmoTa.setText("Mô tả: "+list.get(position).getMota());
-        holder.binding.txtsoluong.setText("Số lượng: "+String.valueOf(list.get(position).getSoluong()));
-        holder.binding.txtSoLuongBanRa.setText("Số lượng đã bán: " + list.get(position).getSoLuotBanRa());
-        if (list.get(position).getSoluong() == 0){
-            holder.binding.txttrangThaiSanPham.setVisibility(View.GONE);
-            holder.binding.txttrangThaiSanPham1.setVisibility(View.VISIBLE);
+    public void onBindViewHolder(@NonNull viewH holder, int position) {
+        holder.txt.txtmaSanPham.setText("MÃ sản phẩm: " + String.valueOf(list.get(position).getMasanpham()));
+        holder.txt.txtTenSanPham.setText("Tên sản phẩm: " + list.get(position).getTensanpham());
+        holder.txt.txtgiaSanPham.setText("Giá sản phẩm: " + String.valueOf(list.get(position).getGia()));
+        holder.txt.txtmoTa.setText("Mô tả: " + list.get(position).getMota());
+        holder.txt.txtsoluong.setText("Số lượng: " + String.valueOf(list.get(position).getSoluong()));
+        holder.txt.txtSoLuongBanRa.setText("Số lượng đã bán: " + list.get(position).getSoLuotBanRa());
+        if (list.get(position).getSoluong() == 0) {
+            holder.txt.txttrangThaiSanPham.setVisibility(View.GONE);
+            holder.txt.txttrangThaiSanPham1.setVisibility(View.VISIBLE);
 
-        }else {
-            holder.binding.txttrangThaiSanPham.setVisibility(View.VISIBLE);
-            holder.binding.txttrangThaiSanPham1.setVisibility(View.GONE);
+        } else {
+            holder.txt.txttrangThaiSanPham.setVisibility(View.VISIBLE);
+            holder.txt.txttrangThaiSanPham1.setVisibility(View.GONE);
         }
-        Picasso.get().load(list.get(position).getAnhSanPham()).into(holder.binding.imgItemAnhSanPham);
+        Picasso.get().load(list.get(position).getAnhSanPham()).into(holder.txt.imgItemAnhSanPham);
         SanPham sp = list.get(position);
-        holder.binding.btnXoa.setOnClickListener(new View.OnClickListener() {
+        holder.txt.btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Thông báo");
-                builder.setMessage("Bạn có muốn xóa sản phẩm có " + holder.binding.txtTenSanPham.getText() + " không?");
+                builder.setMessage("Bạn có muốn xóa sản phẩm có " + holder.txt.txtTenSanPham.getText() + " không?");
 
                 // Tạo RelativeLayout để chứa nút "Không" và "Đồng ý"
                 RelativeLayout layout = new RelativeLayout(context);
@@ -159,7 +158,7 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
+                LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
                 DialogSuasanphamBinding suaspbiding = DialogSuasanphamBinding.inflate(layoutInflater);
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setView(suaspbiding.getRoot());
@@ -182,11 +181,11 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
                 int index = 0;
                 int position = -1;
 
-                for(HashMap<String, Object> item : listHM){
-                    if((int) item.get("maloaisanpham") == sp.getMaloaisanpham()){
+                for (HashMap<String, Object> item : listHM) {
+                    if ((int) item.get("maloaisanpham") == sp.getMaloaisanpham()) {
                         position = index;
                     }
-                    index ++;
+                    index++;
                 }
                 suaspbiding.spnmaLoaiSanPham.setSelection(position);
                 suaspbiding.btnsuasp.setOnClickListener(new View.OnClickListener() {
@@ -196,11 +195,11 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
                         String gia = suaspbiding.edgiaSanPham.getText().toString();
                         String mota = suaspbiding.edmoTa.getText().toString();
                         String anhsanpham = suaspbiding.edUpAnhSanPham.getText().toString();
-                        String soluong=suaspbiding.edsoluong.getText().toString();
+                        String soluong = suaspbiding.edsoluong.getText().toString();
                         HashMap<String, Object> hs = (HashMap<String, Object>) suaspbiding.spnmaLoaiSanPham.getSelectedItem();
                         int maloaisp = (int) hs.get("maloaisanpham");
 
-                        if (tensanpham.isEmpty() || gia.isEmpty()||mota.isEmpty()||anhsanpham.isEmpty()||soluong.isEmpty()) {
+                        if (tensanpham.isEmpty() || gia.isEmpty() || mota.isEmpty() || anhsanpham.isEmpty() || soluong.isEmpty()) {
                             if (tensanpham.equals("")) {
                                 suaspbiding.edtenSanPham.setError("Vui lòng không để trống tên sản phẩm");
                             } else {
@@ -220,7 +219,8 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
                                 suaspbiding.edUpAnhSanPham.setError("Vui lòng không để trống giá sản phẩm");
                             } else {
                                 suaspbiding.edUpAnhSanPham.setError(null);
-                            }if (anhsanpham.equals("")) {
+                            }
+                            if (anhsanpham.equals("")) {
                                 suaspbiding.edUpAnhSanPham.setError("Vui lòng không để trống tên sản phẩm");
                             } else {
                                 suaspbiding.edUpAnhSanPham.setError(null);
@@ -233,13 +233,13 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
                         } else {
                             try {
                                 int tien = Integer.parseInt(gia);
-                                int soluongcheck=Integer.parseInt(soluong);
-                                if (tien <= 0||soluongcheck<0) {
+                                int soluongcheck = Integer.parseInt(soluong);
+                                if (tien <= 0 || soluongcheck < 0) {
                                     suaspbiding.edgiaSanPham.setError("Giá sản phẩm phải lớn hơn 0");
                                     suaspbiding.edsoluong.setError("số lượng lớn hơn 0");
                                 } else {
                                     suaspbiding.edgiaSanPham.setError(null);
-                                    boolean check = dao.update(sp.getMasanpham(), tensanpham, tien, maloaisp,mota,anhsanpham,soluongcheck);
+                                    boolean check = dao.update(sp.getMasanpham(), tensanpham, tien, maloaisp, mota, anhsanpham, soluongcheck);
                                     if (check) {
                                         list.clear();
                                         list = dao.getsanphamall();
@@ -273,11 +273,13 @@ public class Adapter_san_pham extends RecyclerView.Adapter<Adapter_san_pham.View
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        ItemSanphamBinding binding;
-        public ViewHolder(ItemSanphamBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+    public class viewH extends RecyclerView.ViewHolder {
+        //TextView txtma_san_pham,txtten_san_pham
+        ItemSanphamBinding txt;
+
+        public viewH(@NonNull ItemSanphamBinding txt) {
+            super(txt.getRoot());
+            this.txt = txt;
         }
     }
 }

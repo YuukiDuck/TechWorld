@@ -6,14 +6,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
+import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.databinding.ActivityManHinhDangKyBinding;
 
 public class man_hinh_dang_ky extends AppCompatActivity {
     ActivityManHinhDangKyBinding binding;
 
-    User nd = new User();
+    NguoiDung nd = new NguoiDung();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class man_hinh_dang_ky extends AppCompatActivity {
         nd.setLoaiTaiKhoan("user"); // Đặt loại tài khoản mặc định khi đăng ký
 
         // Thực hiện đăng ký bằng cách thêm người dùng vào cơ sở dữ liệu
-        UserDao dao = new UserDao(man_hinh_dang_ky.this);
+        NguoiDungDao dao = new NguoiDungDao(man_hinh_dang_ky.this);
         boolean result = dao.checkDangKy(nd);
 
         if (result) {
@@ -59,7 +59,7 @@ public class man_hinh_dang_ky extends AppCompatActivity {
     }
 
     private boolean validateDangKy() {
-        UserDao dao = new UserDao(man_hinh_dang_ky.this);
+        NguoiDungDao dao = new NguoiDungDao(man_hinh_dang_ky.this);
         String tenDangNhap = binding.edtTenDangNhapDangKy.getText().toString().trim();
         String matKhau = binding.edtNhapPassDangKy.getText().toString().trim();
         String nhapLaiMatKhau = binding.edtNhapLaiPassDangKy.getText().toString().trim();

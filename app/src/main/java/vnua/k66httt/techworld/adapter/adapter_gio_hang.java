@@ -17,7 +17,7 @@ import vnua.k66httt.techworld.Dao.GioHangDao;
 import vnua.k66httt.techworld.Model.GioHang;
 import vnua.k66httt.techworld.databinding.ItemGioHangBinding;
 
-public class Adapter_gio_hang extends RecyclerView.Adapter<Adapter_gio_hang.ViewHolder> {
+public class adapter_gio_hang extends RecyclerView.Adapter<adapter_gio_hang.ViewHolder> {
 
     private ArrayList<GioHang> list;
     Context context;
@@ -26,7 +26,7 @@ public class Adapter_gio_hang extends RecyclerView.Adapter<Adapter_gio_hang.View
     private TotalPriceListener listener;
 
 
-    public Adapter_gio_hang(Context context, ArrayList<GioHang> list) {
+    public adapter_gio_hang(Context context,  ArrayList<GioHang> list) {
         this.context = context;
         this.list = list;
 
@@ -108,9 +108,8 @@ public class Adapter_gio_hang extends RecyclerView.Adapter<Adapter_gio_hang.View
             Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
         }
     }
-
     public void removeItem2(int pos) {
-        GioHang gioHang1 = list.get(pos);
+        GioHang gioHang1=list.get(pos);
         if (dao.deleteGioHang(gioHang1)) {
             list.remove(gioHang1);
 
@@ -164,3 +163,4 @@ public class Adapter_gio_hang extends RecyclerView.Adapter<Adapter_gio_hang.View
         }
     }
 }
+

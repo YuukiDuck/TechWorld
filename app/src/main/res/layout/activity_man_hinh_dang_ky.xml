@@ -73,43 +73,6 @@
                         android:textSize="18sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Giới tính -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/baloothambi2semibold"
-                    android:text="Giới tính"
-                    android:textColor="@color/mau_chu"
-                    android:textSize="20sp" />
-
-                <RadioGroup
-                    android:id="@+id/rg_gioi_tinh"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rbnam"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nam"
-                        android:textSize="18sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbnu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nữ"
-                        android:textSize="18sp" />
-
-                    <RadioButton
-                        android:id="@+id/rbkhac"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Khác"
-                        android:textSize="18sp" />
-                </RadioGroup>
-
                 <!-- Số điện thoại -->
                 <TextView
                     android:layout_width="match_parent"

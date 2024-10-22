@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
+import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.adapter.Adapter_nguoi_dung;
 import vnua.k66httt.techworld.databinding.FragmentFrgQuanLyNguoiDungBinding;
@@ -22,9 +22,9 @@ import vnua.k66httt.techworld.databinding.FragmentFrgQuanLyNguoiDungBinding;
 public class frgQuanLyNguoiDung extends Fragment {
     private FragmentFrgQuanLyNguoiDungBinding binding;
     private View vView;
-    private UserDao dao;
+    private NguoiDungDao dao;
     private Adapter_nguoi_dung adapterNguoiDung;
-    private ArrayList<User> list = new ArrayList<>();
+    private ArrayList<NguoiDung> list = new ArrayList<>();
 
     public frgQuanLyNguoiDung() {
         // Required empty public constructor
@@ -36,7 +36,7 @@ public class frgQuanLyNguoiDung extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentFrgQuanLyNguoiDungBinding.inflate(inflater, container, false);
         vView = binding.getRoot();
-        dao = new UserDao(getContext());
+        dao = new NguoiDungDao(getContext());
         list = dao.getAllUsers();
         RecyclerView rcv = binding.rcvNguoiDung;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -63,7 +63,7 @@ public class frgQuanLyNguoiDung extends Fragment {
             int tien = bundle.getInt("soTien");
             String loaiTaiKhoan = bundle.getString("loaiTaiKhoan");
 
-            User nd = new User();
+            NguoiDung nd = new NguoiDung();
             nd.setMatKhau(matKhau);
             nd.setHoTen(hoTen);
             nd.setEmail(email);

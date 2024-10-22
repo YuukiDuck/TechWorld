@@ -15,12 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import vnua.k66httt.techworld.R;
 
 public class swipe extends ItemTouchHelper.SimpleCallback {
+
     private Drawable icon;
     private ColorDrawable background;
-    private Adapter_gio_hang mAdapter;
+    private  adapter_gio_hang mAdapter;
     Context context;
 
-    public swipe(Adapter_gio_hang adapter) {
+    public swipe(adapter_gio_hang adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         mAdapter = adapter;
         icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_xoa); // Đổi icon tùy chọn
@@ -68,4 +69,5 @@ public class swipe extends ItemTouchHelper.SimpleCallback {
         background.draw(c);
         icon.draw(c);
     }
+
 }

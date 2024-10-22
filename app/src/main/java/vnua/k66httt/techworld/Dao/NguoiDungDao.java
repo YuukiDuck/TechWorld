@@ -12,14 +12,14 @@ import android.util.Log;
 import java.util.ArrayList;
 import vnua.k66httt.techworld.Database.dbVnua;
 
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Model.NguoiDung;
 
-public class UserDao {
+public class NguoiDungDao {
     private final dbVnua dbVnua;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-    public UserDao(Context context) {
+    public NguoiDungDao(Context context) {
         this.dbVnua = new dbVnua(context);
         if (context != null) {
             sharedPreferences = context.getSharedPreferences("NGUOIDUNG", context.MODE_PRIVATE);
@@ -61,31 +61,31 @@ public class UserDao {
     }
 
 
-    public boolean checkDangKy(User user) {
+    public boolean checkDangKy(NguoiDung nguoiDung) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tendangnhap", user.getTenDangNhap());
-        values.put("matkhau", user.getMatKhau());
-        values.put("hoten", user.getHoTen());
-        values.put("email", user.getEmail());
-        values.put("sodienthoai", user.getSoDienThoai());
-        values.put("diachi", user.getDiaChi());
-        values.put("sotien", user.getSoTien());
-        values.put("loaitaikhoan", user.getLoaiTaiKhoan());
+        values.put("tendangnhap", nguoiDung.getTenDangNhap());
+        values.put("matkhau", nguoiDung.getMatKhau());
+        values.put("hoten", nguoiDung.getHoTen());
+        values.put("email", nguoiDung.getEmail());
+        values.put("sodienthoai", nguoiDung.getSoDienThoai());
+        values.put("diachi", nguoiDung.getDiaChi());
+        values.put("sotien", nguoiDung.getSoTien());
+        values.put("loaitaikhoan", nguoiDung.getLoaiTaiKhoan());
         long result = db.insert("TAIKHOAN", null, values);
         return result != -1;
     }
 
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<NguoiDung> getAllUsers() {
 
-        ArrayList<User> list = new ArrayList<>();
+        ArrayList<NguoiDung> list = new ArrayList<>();
         SQLiteDatabase db = dbVnua.getReadableDatabase();
         try {
             Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN", null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    User nd = new User();
+                    NguoiDung nd = new NguoiDung();
                     nd.setMaTaiKhoan(cursor.getInt(0));
                     nd.setTenDangNhap(cursor.getString(1));
                     nd.setMatKhau(cursor.getString(2));
@@ -122,15 +122,15 @@ public class UserDao {
         }
     }
 
-    public boolean updatekhachhang(User user) {
+    public boolean updatekhachhang(NguoiDung nguoiDung) {
         SQLiteDatabase db = dbVnua.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("hoten", user.getHoTen());
-        values.put("sodienthoai", user.getSoDienThoai());
-        values.put("matkhau", user.getMatKhau());
-        values.put("email", user.getEmail());
-        values.put("diachi", user.getDiaChi());
-        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(user.getMaTaiKhoan())});
+        values.put("hoten", nguoiDung.getHoTen());
+        values.put("sodienthoai", nguoiDung.getSoDienThoai());
+        values.put("matkhau", nguoiDung.getMatKhau());
+        values.put("email", nguoiDung.getEmail());
+        values.put("diachi", nguoiDung.getDiaChi());
+        long check = db.update("TAIKHOAN", values, "mataikhoan = ?", new String[]{String.valueOf(nguoiDung.getMaTaiKhoan())});
         if (check == -1) {
             return false;
         } else {
@@ -161,16 +161,16 @@ public class UserDao {
         return result != -1;
     }
 
-    public User getNguoiDungByMaTaiKhoan(int maTaiKhoan) {
+    public NguoiDung getNguoiDungByMaTaiKhoan(int maTaiKhoan) {
         SQLiteDatabase db = dbVnua.getReadableDatabase();
-        User nd = null;
+        NguoiDung nd = null;
 
         try {
             Cursor cursor = db.rawQuery("SELECT * FROM TAIKHOAN WHERE mataikhoan = ?", new String[]{String.valueOf(maTaiKhoan)});
 
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
-                nd = new User();
+                nd = new NguoiDung();
                 nd.setMaTaiKhoan(cursor.getInt(0));
                 nd.setMatKhau(cursor.getString(2));
                 nd.setHoTen(cursor.getString(3));

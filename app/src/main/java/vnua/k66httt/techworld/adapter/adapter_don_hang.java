@@ -5,15 +5,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -22,22 +19,22 @@ import vnua.k66httt.techworld.Dao.DonHangDao;
 import vnua.k66httt.techworld.Interface.OnItemClick;
 import vnua.k66httt.techworld.Model.DonHang;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.databinding.DialogBottomsheetSapxepBinding;
-import vnua.k66httt.techworld.databinding.DialogXoaDonHangBinding;
 import vnua.k66httt.techworld.databinding.DialogUpdateTrangThaiDonhangBinding;
-
+import vnua.k66httt.techworld.databinding.DialogXoaDonHangBinding;
 import vnua.k66httt.techworld.databinding.ItemQlDonHangBinding;
 
-public class Adapter_don_hang extends RecyclerView.Adapter<Adapter_don_hang.Viewholder> {
+public class adapter_don_hang extends RecyclerView.Adapter<adapter_don_hang.Viewholder> {
     protected ArrayList<DonHang> list;
     protected DonHangDao dao;
     private Context context;
 
-    public Adapter_don_hang(ArrayList<DonHang> list, Context context) {
+    public adapter_don_hang(ArrayList<DonHang> list, Context context) {
         this.list = list;
         this.context = context;
         dao = new DonHangDao(context);
     }
+
+
 
     private OnItemClick mListener;
 
@@ -84,7 +81,7 @@ public class Adapter_don_hang extends RecyclerView.Adapter<Adapter_don_hang.View
                 public void onClick(View view) {
                     android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(context);
                     builder1.setTitle("Lựa chọn trạng thái");
-                    String[] loai = {"Chờ phê duyệt", "Đã phê duyệt", "Đang giao hàng", "Đã giao hàng"};
+                    String[] loai = {"Chờ phê duyệt","Đã phê duyệt","Đang giao hàng","Đã giao hàng"};
 
                     builder1.setItems(loai, new DialogInterface.OnClickListener() {
                         @Override

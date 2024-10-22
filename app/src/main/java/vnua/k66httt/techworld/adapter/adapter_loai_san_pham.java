@@ -25,28 +25,27 @@ import vnua.k66httt.techworld.Dao.LoaiSanPhamDao;
 import vnua.k66httt.techworld.Model.LoaiSanPham;
 import vnua.k66httt.techworld.R;
 
-public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san_pham.ViewHolder> {
+public class adapter_loai_san_pham extends RecyclerView.Adapter<adapter_loai_san_pham.viewhl> {
     private final Context context;
     private final ArrayList<LoaiSanPham> list;
     LoaiSanPhamDao dao;
 
-    public Adapter_loai_san_pham( ArrayList<LoaiSanPham> list,Context context) {
-        this.context = context;
+    public adapter_loai_san_pham(ArrayList<LoaiSanPham> list, Context context) {
         this.list = list;
+        this.context = context;
         dao = new LoaiSanPhamDao(context);
     }
 
-
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public viewhl onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View view = inflater.inflate(R.layout.item_loaisanpham, parent, false);
-        return new ViewHolder(view);
+        return new viewhl(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull viewhl holder, int position) {
         holder.txtmaloaisanpham.setText("Mã loại sản phẩm: " + String.valueOf(list.get(position).getMaloaisp()));
         holder.txttenloaisanpham.setText("Tên loại sản phẩm: " + list.get(position).getTenloaisp());
         LoaiSanPham lsp = list.get(position);
@@ -54,10 +53,10 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Thông Báo");
-                builder.setTitle("Bạn có muốn xóa loại sản phẩm" + holder.txttenloaisanpham.getText() + "không");
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn có muốn xóa loại sản phẩm có " + holder.txttenloaisanpham.getText() + " không?");
 
-                //Tạo Relative để chứa nút không or đồng ý
+                // Tạo RelativeLayout để chứa nút "Không" và "Đồng ý"
                 RelativeLayout layout = new RelativeLayout(context);
 
                 // Tạo nút "Không"
@@ -90,17 +89,21 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
                 btnAdd.setTextColor(ContextCompat.getColor(context, R.color.xanh_doan));
                 btnAdd.setAllCaps(false);
 
-                //Thêm vào RelaytiveLayout
-                layout.addView(btnAdd);
+                // Thêm nút "Không" và "Đồng ý" vào RelativeLayout
                 layout.addView(btnCancel);
+                layout.addView(btnAdd);
 
-                //Thiết lập làm nội dung cho AlertDialog
+                // Thiết lập RelativeLayout làm nội dung cho AlertDialog
                 builder.setView(layout);
+
+                // Thiết lập background cho AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.nen_dialog_doan);
+
+                // Hiển thị AlertDialog
                 dialog.show();
 
-                //sử dụng biến dialog trong phương thức onclick của nút không
+                // Sử dụng biến dialog trong phương thức onClick của nút "Không"
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -136,7 +139,6 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
                         dialog.dismiss();
                     }
                 });
-
             }
         });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -147,6 +149,23 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
             }
         });
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public static class viewhl extends RecyclerView.ViewHolder {
+        TextView txtmaloaisanpham, txttenloaisanpham;
+        ImageButton btnxoa;
+
+        public viewhl(@NonNull View itemView) {
+            super(itemView);
+            txtmaloaisanpham = itemView.findViewById(R.id.txtma_loai_san_pham);
+            txttenloaisanpham = itemView.findViewById(R.id.txtten_loai_san_pham);
+            btnxoa = itemView.findViewById(R.id.btnxoa);
+        }
     }
 
     public void dialogsualsp(LoaiSanPham lsp) {
@@ -195,22 +214,5 @@ public class Adapter_loai_san_pham extends RecyclerView.Adapter<Adapter_loai_san
                 dialog.dismiss();
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtmaloaisanpham, txttenloaisanpham;
-        ImageButton btnxoa;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            txtmaloaisanpham = itemView.findViewById(R.id.txtma_loai_san_pham);
-            txttenloaisanpham = itemView.findViewById(R.id.txtten_loai_san_pham);
-            btnxoa = itemView.findViewById(R.id.btnxoa);
-        }
     }
 }

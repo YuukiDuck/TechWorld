@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import vnua.k66httt.techworld.Dao.UserDao;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.FragmentFrgAddNguoiDungBinding;
 
@@ -23,12 +23,12 @@ public class frgAddNguoiDung extends Fragment {
     String hoTen, matKhau, email, soDienThoai, diaChi, loaiTaiKhoan;
     FragmentFrgAddNguoiDungBinding binding;
     int soTien;
-    private UserDao dao;
+    private NguoiDungDao dao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentFrgAddNguoiDungBinding.inflate(inflater, container, false);
-        dao = new UserDao(getContext());
+        dao = new NguoiDungDao(getContext());
         binding.inEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {

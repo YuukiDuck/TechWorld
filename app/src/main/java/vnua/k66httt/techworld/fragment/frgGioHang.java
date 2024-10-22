@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,7 +28,7 @@ import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
 import vnua.k66httt.techworld.Dao.DonHangDao;
 import vnua.k66httt.techworld.Dao.GioHangDao;
 import vnua.k66httt.techworld.Dao.SanPhamDao;
-import vnua.k66httt.techworld.Dao.UserDao;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
 import vnua.k66httt.techworld.Model.DonHang;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.Model.GioHang;
@@ -155,7 +154,7 @@ public class frgGioHang extends Fragment implements Adapter_gio_hang.TotalPriceL
 
                 //nếu tiền trong tài khoản đủ thì sẽ thực hiện trừ tiền
                 int soTienConLai = tienHienCo - totalAmount;
-                UserDao nguoiDungDao = new UserDao(getContext());
+                NguoiDungDao nguoiDungDao = new NguoiDungDao(getContext());
 
                 //Update lại tiền trong tài khoản của người dùng
                 if (nguoiDungDao.updateSoTien(mand, soTienConLai)) {

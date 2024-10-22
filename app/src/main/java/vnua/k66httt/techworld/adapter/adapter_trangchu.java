@@ -18,19 +18,20 @@ import vnua.k66httt.techworld.Interface.OnItemClick;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.databinding.ItemTrangChuBinding;
 
-public class Adapter_trangchu extends RecyclerView.Adapter<Adapter_trangchu.ViewHolder> {
+public class adapter_trangchu extends RecyclerView.Adapter<adapter_trangchu.ViewHo> {
     private ArrayList<SanPham> list;
     private Context context;
     SanPhamDao dao;
 
-    public Adapter_trangchu(ArrayList<SanPham> list, Context context) {
+
+    public adapter_trangchu(ArrayList<SanPham> list, Context context) {
         this.list = list;
         this.context = context;
 
         dao = new SanPhamDao(context);
     }
-
     private OnAddToCart mAddToCartClickListener;
+
 
     private OnItemClick mListener;
     public void setOnItemClick(OnItemClick listener){
@@ -47,13 +48,13 @@ public class Adapter_trangchu extends RecyclerView.Adapter<Adapter_trangchu.View
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemTrangChuBinding biding = ItemTrangChuBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(biding);
+        return new ViewHo(biding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHo holder, int position) {
         holder.biding.txttenSanPham.setText(list.get(position).getTensanpham());
         holder.biding.txtgiasp.setText(String.valueOf(list.get(position).getGia()));
         Picasso.get().load(list.get(position).getAnhSanPham()).into(holder.biding.imgAnhSpTrangChu);
@@ -87,10 +88,10 @@ public class Adapter_trangchu extends RecyclerView.Adapter<Adapter_trangchu.View
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHo extends RecyclerView.ViewHolder {
         ItemTrangChuBinding biding;
 
-        public ViewHolder(@NonNull ItemTrangChuBinding biding) {
+        public ViewHo(@NonNull ItemTrangChuBinding biding) {
             super(biding.getRoot());
             this.biding = biding;
         }

@@ -14,12 +14,11 @@ import java.util.List;
 import vnua.k66httt.techworld.Model.Slideiten;
 import vnua.k66httt.techworld.R;
 
-public class Adapter_slide extends RecyclerView.Adapter<Adapter_slide.SlideViewHoler> {
-
+public class adapter_slide extends RecyclerView.Adapter<adapter_slide.SlideViewHoler> {
     private List<Slideiten> slideItems;
     private ViewPager2 viewPager2;
 
-    public Adapter_slide(List<Slideiten> slideItems, ViewPager2 viewPager2) {
+    public adapter_slide(List<Slideiten> slideItems, ViewPager2 viewPager2) {
         this.slideItems = slideItems;
         this.viewPager2 = viewPager2;
     }
@@ -34,11 +33,13 @@ public class Adapter_slide extends RecyclerView.Adapter<Adapter_slide.SlideViewH
 
     @Override
     public void onBindViewHolder(@NonNull SlideViewHoler holder, int position) {
-        Slideiten slideiten = slideItems.get(position);
-        if (slideiten == null) {
+        Slideiten slideiten=slideItems.get(position);
+        if (slideiten==null){
             return;
         }
+
         holder.imgView.setImageResource(slideiten.getImage());
+//        holder.setImgView(slideItems.get(position));
 //        ///vòng lặp cho slide quay về
         viewPager2.post(runnable);
 
@@ -46,7 +47,7 @@ public class Adapter_slide extends RecyclerView.Adapter<Adapter_slide.SlideViewH
 
     @Override
     public int getItemCount() {
-        if (slideItems != null) {
+        if (slideItems !=null){
             return slideItems.size();
         }
         return 0;
@@ -59,11 +60,16 @@ public class Adapter_slide extends RecyclerView.Adapter<Adapter_slide.SlideViewH
             super(itemView);
             imgView = itemView.findViewById(R.id.imageslide);
         }
-    }
 
+
+    }
+    //vòng lặp
     private Runnable runnable=new Runnable() {
         @Override
         public void run() {
+//            slideItems.addAll(slideItems);
+//            notifyDataSetChanged();
+
             int vitri = viewPager2.getCurrentItem();
             if (vitri == slideItems.size() -1){
                 viewPager2.setCurrentItem(0);
@@ -72,4 +78,6 @@ public class Adapter_slide extends RecyclerView.Adapter<Adapter_slide.SlideViewH
             }
         }
     };
+
 }
+

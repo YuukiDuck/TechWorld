@@ -12,48 +12,47 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
-import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
+import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.databinding.DialogXoaNguoiDungBinding;
 import vnua.k66httt.techworld.databinding.ItemQlNdBinding;
 
-public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.ViewHolder> {
-    private ArrayList<User> list;
+public class adapter_nguoi_dung extends RecyclerView.Adapter<adapter_nguoi_dung.ViewHolder> {
+    private ArrayList<NguoiDung> list;
     private Context context;
-    private UserDao dao;
+    private NguoiDungDao dao;
 
-    public Adapter_nguoi_dung(ArrayList<User> list, Context context) {
+    public adapter_nguoi_dung(ArrayList<NguoiDung> list, Context context) {
         this.list = list;
         this.context = context;
-        dao = new UserDao(context);
+        dao=new NguoiDungDao(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemQlNdBinding binding = ItemQlNdBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemQlNdBinding binding = ItemQlNdBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+
         return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.binding.txtmaNguoiDung.setText("Mã: " + String.valueOf(list.get(position).getMaTaiKhoan()));
+        holder.binding.txtmaNguoiDung.setText("Mã: "+String.valueOf(list.get(position).getMaTaiKhoan()));
         holder.binding.txtTenNguoiDung.setText("Tên: " + String.valueOf(list.get(position).getHoTen()));
-        holder.binding.txtSoDienThoai.setText("Số ĐT: " + list.get(position).getSoDienThoai());
-        holder.binding.txtEmail.setText("Email: " + list.get(position).getEmail());
-        holder.binding.txtDiaChi.setText("Địa chỉ: " + list.get(position).getDiaChi());
-        holder.binding.txtCoins.setText("Coins: " + String.valueOf(list.get(position).getSoTien()));
-        User user = list.get(position);
+        holder.binding.txtSoDienThoai.setText("Số ĐT: "+list.get(position).getSoDienThoai());
+        holder.binding.txtDiaChiEmail.setText("Email: "+list.get(position).getEmail());
+        holder.binding.txtDiaChi.setText("Địa chỉ: "+ list.get(position).getDiaChi());
+        holder.binding.txtCoins.setText("Coins: "+String.valueOf(list.get(position).getSoTien()));
+        NguoiDung nd = list.get(position);
         holder.binding.btnxoaND.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 
                 DialogXoaNguoiDungBinding dialogXoaNguoiDungBinding = DialogXoaNguoiDungBinding.inflate(inflater);
                 builder.setView(dialogXoaNguoiDungBinding.getRoot());
@@ -81,7 +80,8 @@ public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.
                             default:
                                 break;
                         }
-                        dialog.dismiss();//close dialog
+                        // Đóng AlertDialog sau khi xử lý
+                        dialog.dismiss();
                     }
                 });
                 dialogXoaNguoiDungBinding.btnOutXoaNguoiDung.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +92,7 @@ public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.
                 });
             }
         });
+
     }
 
     @Override
@@ -99,9 +100,8 @@ public class Adapter_nguoi_dung extends RecyclerView.Adapter<Adapter_nguoi_dung.
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         ItemQlNdBinding binding;
-
         public ViewHolder(ItemQlNdBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

@@ -18,30 +18,27 @@ import vnua.k66httt.techworld.Interface.OnAddDanhGia;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.databinding.ItemLsDonHangChiTietBinding;
 
-public class Adapter_ls_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_ls_don_hang_chi_tiet.ViewHolder> {
-
+public class adapter_ls_don_hang_chi_tiet extends RecyclerView.Adapter<adapter_ls_don_hang_chi_tiet.ViewHolder>{
     private ArrayList<DonHangChiTiet> list;
     private Context context;
     private DonHangChiTietDao dao;
     private DanhGiaDao dao2;
-    private OnAddDanhGia mAddDanhGia;
-
-    public Adapter_ls_don_hang_chi_tiet(ArrayList<DonHangChiTiet> list, Context context) {
+    public adapter_ls_don_hang_chi_tiet(ArrayList<DonHangChiTiet> list, Context context) {
         this.list = list;
         this.context = context;
         dao = new DonHangChiTietDao(context);
-        dao2 = new DanhGiaDao(context);
+        dao2=new DanhGiaDao(context);
     }
+    private OnAddDanhGia mAddDanhGia;
 
-    public void setOnAddDanhGia(OnAddDanhGia listener) {
+    public void setonAddDanhia(OnAddDanhGia listener) {
         mAddDanhGia = listener;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemLsDonHangChiTietBinding binding = ItemLsDonHangChiTietBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new Adapter_ls_don_hang_chi_tiet.ViewHolder(binding);
+        return new adapter_ls_don_hang_chi_tiet.ViewHolder(binding);
     }
 
     @Override
@@ -70,6 +67,7 @@ public class Adapter_ls_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_l
         return list.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ItemLsDonHangChiTietBinding binding;
 
@@ -78,5 +76,4 @@ public class Adapter_ls_don_hang_chi_tiet extends RecyclerView.Adapter<Adapter_l
             this.binding = binding;
         }
     }
-
 }

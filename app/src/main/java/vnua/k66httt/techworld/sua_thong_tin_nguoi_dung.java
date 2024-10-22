@@ -10,15 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-import vnua.k66httt.techworld.Dao.UserDao;
-import vnua.k66httt.techworld.Model.User;
+import vnua.k66httt.techworld.Dao.NguoiDungDao;
+import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.databinding.ActivitySuaThongTinNguoiDungBinding;
 
 public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
     ActivitySuaThongTinNguoiDungBinding binding;
-    UserDao dao;
-    User user;
-    private ArrayList<User> list = new ArrayList<>();
+    NguoiDungDao dao;
+    NguoiDung nguoiDung;
+    private ArrayList<NguoiDung> list = new ArrayList<>();
     String tenDangNhap, email,matkhau , matkhaucu, matkhaumoi, nhaplaimatkhaumoi, hoten, diachi, sodienthoai;
 
     @Override
@@ -36,8 +36,8 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
         String sodienthoai = preferences.getString("sodienthoai", "");
         String diachi = preferences.getString("diachi", "");
         String urlAnh = preferences.getString("anhtaikhoan", "");
-        dao = new UserDao(this);
-        user = dao.getNguoiDungByMaTaiKhoan(maTK);
+        dao = new NguoiDungDao(this);
+        nguoiDung = dao.getNguoiDungByMaTaiKhoan(maTK);
         binding.edtTenDangNhapDangKy.setText(tenDN);
         binding.edtNhapHoTen.setText(hoten);
         binding.edtNhapEmailDangKy.setText(email);
@@ -70,13 +70,13 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
                         binding.edtNhapDiaChiDangKy.getError() == null &&
                         binding.edtNhapSDT.getError() == null ){
                     if (matkhaucu.equals(matkhau)) {
-                        user.setTenDangNhap(tenDangNhap);
-                        user.setMatKhau(matkhaumoi);
-                        user.setHoTen(hoten);
-                        user.setEmail(email);
-                        user.setDiaChi(diachi);
-                        user.setSoDienThoai(sodienthoai);
-                        boolean result = dao.updatekhachhang(user);
+                        nguoiDung.setTenDangNhap(tenDangNhap);
+                        nguoiDung.setMatKhau(matkhaumoi);
+                        nguoiDung.setHoTen(hoten);
+                        nguoiDung.setEmail(email);
+                        nguoiDung.setDiaChi(diachi);
+                        nguoiDung.setSoDienThoai(sodienthoai);
+                        boolean result = dao.updatekhachhang(nguoiDung);
                         if (result) {
                             list.clear();
                             list = dao.getAllUsers();
@@ -148,7 +148,7 @@ public class sua_thong_tin_nguoi_dung extends AppCompatActivity {
         matkhaucu = binding.edmatKhau.getText().toString();
         if (matkhaucu.isEmpty()) {
             binding.edmatKhau.setError("Vui lòng nhập lại mật khẩu");
-        } else if (!matkhaucu.equals(user.getMatKhau())) { // Sửa dòng này để so sánh với mật khẩu trong đối tượng user
+        } else if (!matkhaucu.equals(nguoiDung.getMatKhau())) { // Sửa dòng này để so sánh với mật khẩu trong đối tượng user
             binding.edmatKhau.setError("Mật khẩu không đúng");
         } else {
             binding.edmatKhau.setError(null);

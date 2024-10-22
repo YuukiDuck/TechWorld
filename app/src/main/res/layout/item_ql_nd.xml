@@ -51,7 +51,7 @@
             android:text="Tên người dùng: "
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_email"
+            android:id="@+id/txt_Dia_chi_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"

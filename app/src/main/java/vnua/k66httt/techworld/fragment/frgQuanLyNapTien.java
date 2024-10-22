@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 import vnua.k66httt.techworld.Dao.NguoiDungDao;
 import vnua.k66httt.techworld.Model.NguoiDung;
-import vnua.k66httt.techworld.adapter.Adapter_quanly_nap_tien;
+import vnua.k66httt.techworld.adapter.adapter_quanly_nap_tien;
 import vnua.k66httt.techworld.databinding.FragmentFrgQuanLyNapTienBinding;
 
 public class frgQuanLyNapTien extends Fragment {
     View view;
     FragmentFrgQuanLyNapTienBinding binding;
     ArrayList<NguoiDung> list;
-    Adapter_quanly_nap_tien adapter;
+    adapter_quanly_nap_tien adapter;
     NguoiDungDao dao;
 
     public frgQuanLyNapTien() {
@@ -37,7 +37,7 @@ public class frgQuanLyNapTien extends Fragment {
         list = dao.getAllUsers();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvNapTien.setLayoutManager(layoutManager);
-        adapter = new Adapter_quanly_nap_tien(list, getContext());
+        adapter = new adapter_quanly_nap_tien(list, getContext());
         binding.rcvNapTien.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         return view;

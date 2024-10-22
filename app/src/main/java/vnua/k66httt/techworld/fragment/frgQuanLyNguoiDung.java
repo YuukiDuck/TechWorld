@@ -16,14 +16,15 @@ import java.util.ArrayList;
 import vnua.k66httt.techworld.Dao.NguoiDungDao;
 import vnua.k66httt.techworld.Model.NguoiDung;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_nguoi_dung;
+
+import vnua.k66httt.techworld.adapter.adapter_nguoi_dung;
 import vnua.k66httt.techworld.databinding.FragmentFrgQuanLyNguoiDungBinding;
 
 public class frgQuanLyNguoiDung extends Fragment {
     private FragmentFrgQuanLyNguoiDungBinding binding;
     private View vView;
     private NguoiDungDao dao;
-    private Adapter_nguoi_dung adapterNguoiDung;
+    private adapter_nguoi_dung adapterNguoiDung;
     private ArrayList<NguoiDung> list = new ArrayList<>();
 
     public frgQuanLyNguoiDung() {
@@ -41,7 +42,7 @@ public class frgQuanLyNguoiDung extends Fragment {
         RecyclerView rcv = binding.rcvNguoiDung;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcv.setLayoutManager(layoutManager);
-        adapterNguoiDung = new Adapter_nguoi_dung(list, getContext());
+        adapterNguoiDung = new adapter_nguoi_dung(list, getContext());
         rcv.setAdapter(adapterNguoiDung);
         // Inflate the layout for this fragment
         binding.flNguoiDung.setOnClickListener(view -> {

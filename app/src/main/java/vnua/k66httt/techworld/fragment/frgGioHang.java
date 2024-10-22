@@ -36,21 +36,23 @@ import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.R;
 import vnua.k66httt.techworld.adapter.Adapter_don_hang;
 import vnua.k66httt.techworld.adapter.Adapter_gio_hang;
+import vnua.k66httt.techworld.adapter.adapter_don_hang;
+import vnua.k66httt.techworld.adapter.adapter_gio_hang;
 import vnua.k66httt.techworld.adapter.swipe;
 import vnua.k66httt.techworld.databinding.DialogConfilmThanhToanBinding;
 import vnua.k66httt.techworld.databinding.FragmentFrgGioHangBinding;
 
-public class frgGioHang extends Fragment implements Adapter_gio_hang.TotalPriceListener {
+public class frgGioHang extends Fragment implements adapter_gio_hang.TotalPriceListener {
 
     private ArrayList<GioHang> list = new ArrayList<>();
-    private Adapter_gio_hang gioHangAdapter;
+    private adapter_gio_hang gioHangAdapter;
     FragmentFrgGioHangBinding binding;
     View gView;
 
     GioHangDao gioHangDao;
 
     private DonHangDao donHangDao;
-    private Adapter_don_hang adapterDonHang;
+    private adapter_don_hang adapterDonHang;
     private frgQuanLyDonHang frgQuanLyDonHang;
     private ArrayList<DonHang> listDonHang = new ArrayList<>();
     private DonHangChiTietDao chiTietDao;
@@ -73,7 +75,7 @@ public class frgGioHang extends Fragment implements Adapter_gio_hang.TotalPriceL
         rcv.setLayoutManager(layoutManager);
         //
         if (gioHangAdapter == null) {
-            gioHangAdapter = new Adapter_gio_hang(getContext(), cartList);
+            gioHangAdapter = new adapter_gio_hang(getContext(), cartList);
             rcv.setAdapter(gioHangAdapter);
         } else {
             gioHangAdapter.updateCartList(cartList);
@@ -90,7 +92,7 @@ public class frgGioHang extends Fragment implements Adapter_gio_hang.TotalPriceL
         RecyclerView rcv = binding.rcvGioHang;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcv.setLayoutManager(layoutManager);
-        gioHangAdapter = new Adapter_gio_hang(getContext(), list);
+        gioHangAdapter = new adapter_gio_hang(getContext(), list);
         rcv.setAdapter(gioHangAdapter);
         gioHangDao = new GioHangDao(getActivity());
         ItemTouchHelper sw = new ItemTouchHelper(new swipe(gioHangAdapter));

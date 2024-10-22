@@ -19,7 +19,7 @@ import vnua.k66httt.techworld.Dao.SanPhamDao;
 import vnua.k66httt.techworld.Model.LoaiSanPham;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_san_pham;
+import vnua.k66httt.techworld.adapter.adapter_san_pham;
 import vnua.k66httt.techworld.databinding.DialogThemSanPhamBinding;
 import vnua.k66httt.techworld.databinding.FragmentFrgQuanLySanPhamBinding;
 
@@ -28,7 +28,7 @@ public class frgQuanLySanPham extends Fragment {
     FragmentFrgQuanLySanPhamBinding biding;
     SanPhamDao dao;
     ArrayList<SanPham> list;
-    Adapter_san_pham adapter;
+    adapter_san_pham adapter;
 
     public frgQuanLySanPham() {
         // Required empty public constructor
@@ -44,7 +44,7 @@ public class frgQuanLySanPham extends Fragment {
         list = dao.getsanphamall();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         biding.rcvsanpham.setLayoutManager(layoutManager);
-        adapter = new Adapter_san_pham(list, getContext(), getDsLoaiSanPham());
+        adapter = new adapter_san_pham(list, getContext(), getDsLoaiSanPham());
         biding.rcvsanpham.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         // Inflate the layout for this fragment
@@ -177,7 +177,7 @@ public class frgQuanLySanPham extends Fragment {
         list = dao.getsanphamall();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         biding.rcvsanpham.setLayoutManager(layoutManager);
-        Adapter_san_pham adapter = new Adapter_san_pham(list, getContext(), getDsLoaiSanPham());
+        adapter_san_pham adapter = new adapter_san_pham(list, getContext(), getDsLoaiSanPham());
         biding.rcvsanpham.setAdapter(adapter);
     }
 }

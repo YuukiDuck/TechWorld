@@ -27,7 +27,7 @@ import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
 import vnua.k66httt.techworld.Interface.OnAddDanhGia;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_ls_don_hang_chi_tiet;
+import vnua.k66httt.techworld.adapter.adapter_ls_don_hang_chi_tiet;
 import vnua.k66httt.techworld.databinding.DialogDanhGiaBinding;
 import vnua.k66httt.techworld.databinding.FragmentFrgLsDonHangChiTietBinding;
 
@@ -39,7 +39,7 @@ public class frg_ls_don_hang_chi_tiet extends Fragment {
     FragmentFrgLsDonHangChiTietBinding binding;
     private ArrayList<DonHangChiTiet> list = new ArrayList<>();
 
-    private Adapter_ls_don_hang_chi_tiet adapterLsDonHangChiTiet;
+    private adapter_ls_don_hang_chi_tiet adapterLsDonHangChiTiet;
     DonHangChiTietDao chiTietDao;
     DanhGiaDao danhGiaDao;
 
@@ -62,9 +62,9 @@ public class frg_ls_don_hang_chi_tiet extends Fragment {
             Log.d("Mã đơn hàng", String.valueOf(maDonHang));
             if (maDonHang != 0) {
                 list = chiTietDao.getChiTietDonHangByMaDonHang(maDonHang);
-                adapterLsDonHangChiTiet = new Adapter_ls_don_hang_chi_tiet(list, getContext());
+                adapterLsDonHangChiTiet = new adapter_ls_don_hang_chi_tiet(list, getContext());
                 binding.rcvLichSuDonHang.setAdapter(adapterLsDonHangChiTiet);
-                adapterLsDonHangChiTiet.setOnAddDanhGia(new OnAddDanhGia() {
+                adapterLsDonHangChiTiet.setonAddDanhia(new OnAddDanhGia() {
                     @Override
                     public void onAddDanhia(DonHangChiTiet donHangChiTiet) {
 

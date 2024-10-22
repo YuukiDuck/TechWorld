@@ -36,9 +36,9 @@ import vnua.k66httt.techworld.Model.GioHang;
 import vnua.k66httt.techworld.Model.LoaiSanPham;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_chon_loai_san_pham;
-import vnua.k66httt.techworld.adapter.Adapter_gian_hang;
-import vnua.k66httt.techworld.adapter.Adapter_gio_hang;
+import vnua.k66httt.techworld.adapter.adapter_chon_loai_san_pham;
+import vnua.k66httt.techworld.adapter.adapter_gian_hang;
+import vnua.k66httt.techworld.adapter.adapter_gio_hang;
 import vnua.k66httt.techworld.databinding.DialogBottomsheetSapxepBinding;
 import vnua.k66httt.techworld.databinding.FragmentFrgGianHangBinding;
 
@@ -52,11 +52,11 @@ public class frgGianHang extends Fragment {
     private ArrayList<SanPham> list = new ArrayList<>();
     private ArrayList<LoaiSanPham> listLoaiSP = new ArrayList<>();
     SanPhamDao spDao;
-    Adapter_gian_hang adapterGianHang;
-    private Adapter_gio_hang gioHangAdapter;
+    adapter_gian_hang adapterGianHang;
+    private adapter_gio_hang gioHangAdapter;
     private LoaiSanPhamDao loaiSanPhamDao;
     private GioHangDao gioHangDao;
-    Adapter_chon_loai_san_pham adapterChonLoaiSanPham;
+    adapter_chon_loai_san_pham adapterChonLoaiSanPham;
     private ArrayList<GioHang> gioHangArrayList = new ArrayList<>();
 
     @Nullable
@@ -73,11 +73,11 @@ public class frgGianHang extends Fragment {
 
         loaiSanPhamDao = new LoaiSanPhamDao(getContext());
         listLoaiSP = loaiSanPhamDao.getalltheloai();
-        adapterGianHang = new Adapter_gian_hang(getActivity(), list);
+        adapterGianHang = new adapter_gian_hang(getActivity(), list);
         binding.rcvGianHang.setAdapter(adapterGianHang);
-        gioHangAdapter = new Adapter_gio_hang(getActivity(), gioHangArrayList);
+        gioHangAdapter = new adapter_gio_hang(getActivity(), gioHangArrayList);
         binding.rcvLoaiSanPham.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
-        adapterChonLoaiSanPham = new Adapter_chon_loai_san_pham(listLoaiSP, getContext());
+        adapterChonLoaiSanPham = new adapter_chon_loai_san_pham(listLoaiSP, getContext());
         binding.rcvLoaiSanPham.setAdapter(adapterChonLoaiSanPham);
         binding.btnTatCa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class frgGianHang extends Fragment {
         });
         adapterGianHang.setOnAddToCartClickListener(sanPham -> themVaoGio(sanPham));
 
-        adapterGianHang.setOnItemCLickListener(position -> {
+        adapterGianHang.setOnItemClickListener(position -> {
             // truyền mã đơn hàng được click để qua màn hình đơn hàng chi tiết gọi phương thức lấy ra đơn chi tiết bằng mã đơn hàng này
             Bundle bundle = new Bundle();
             bundle.putInt("maSanPham", list.get(position).getMasanpham());

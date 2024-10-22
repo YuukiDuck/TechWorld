@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_thanh_toan;
+import vnua.k66httt.techworld.adapter.adapter_thanh_toan;
 import vnua.k66httt.techworld.databinding.FragmentFrgConfilmThanhToanBinding;
 
 public class frgConfilmThanhToan extends Fragment {
@@ -29,7 +29,7 @@ public class frgConfilmThanhToan extends Fragment {
     private FragmentFrgConfilmThanhToanBinding binding;
     private ArrayList<DonHangChiTiet> list = new ArrayList<>();
     private DonHangChiTietDao chiTietDao;
-    private Adapter_thanh_toan adapterThanhToan;
+    private adapter_thanh_toan adapterThanhToan;
 
     @Nullable
     @Override
@@ -45,7 +45,7 @@ public class frgConfilmThanhToan extends Fragment {
             int maDonHang = bundle.getInt("maDonHang, 0");
             if (maDonHang != 0) {
                 list = chiTietDao.getChiTietDonHangByMaDonHang(maDonHang);
-                adapterThanhToan = new Adapter_thanh_toan(list, getContext());
+                adapterThanhToan = new adapter_thanh_toan(list, getContext());
                 binding.rcv.setAdapter(adapterThanhToan);
             }
         }

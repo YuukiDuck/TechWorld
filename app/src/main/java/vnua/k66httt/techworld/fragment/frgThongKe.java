@@ -15,7 +15,7 @@ import java.util.Calendar;
 
 import vnua.k66httt.techworld.Dao.ThongKeDao;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
-import vnua.k66httt.techworld.adapter.Adapter_top3_sanphambanchay;
+import vnua.k66httt.techworld.adapter.adapter_top3_sanphambanchay;
 import vnua.k66httt.techworld.databinding.FragmentThongKeBinding;
 
 public class frgThongKe extends Fragment {
@@ -33,7 +33,7 @@ public class frgThongKe extends Fragment {
         ArrayList<DonHangChiTiet>list = dao.getTop3();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rvctop3sp.setLayoutManager(layoutManager);
-        Adapter_top3_sanphambanchay adapter = new Adapter_top3_sanphambanchay(list, getContext());
+        adapter_top3_sanphambanchay adapter = new adapter_top3_sanphambanchay(list, getContext());
         binding.rvctop3sp.setAdapter(adapter);
         Calendar calendar = Calendar.getInstance();
 

@@ -26,7 +26,7 @@ import vnua.k66httt.techworld.Model.DanhGia;
 import vnua.k66httt.techworld.Model.GioHang;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_danh_gia;
+import vnua.k66httt.techworld.adapter.adapter_danh_gia;
 import vnua.k66httt.techworld.databinding.FragmentFrgSanPhamChiTietBinding;
 
 public class frgSanPhamChiTiet extends Fragment {
@@ -38,7 +38,7 @@ public class frgSanPhamChiTiet extends Fragment {
     SanPhamDao dao;
     GioHangDao gioHangDao;
     private ArrayList<SanPham> list = new ArrayList<>();
-    Adapter_danh_gia adapter;
+    adapter_danh_gia adapter;
     ArrayList<DanhGia>list1=new ArrayList<>();
     DanhGiaDao danhGiaDao;
     private ArrayList<GioHang> gioHangArrayList = new ArrayList<>();
@@ -72,7 +72,7 @@ public class frgSanPhamChiTiet extends Fragment {
             danhGiaDao=new DanhGiaDao(getContext());
             list1=danhGiaDao.getDanhGiaByMaSanPham(maSanPham);
 
-            adapter = new Adapter_danh_gia(list1, getContext());
+            adapter = new adapter_danh_gia(list1, getContext());
             binding.rcvDanhGia.setAdapter(adapter);
             binding.btnThemCtVaoGio.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -34,8 +34,6 @@ import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.Model.GioHang;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_don_hang;
-import vnua.k66httt.techworld.adapter.Adapter_gio_hang;
 import vnua.k66httt.techworld.adapter.adapter_don_hang;
 import vnua.k66httt.techworld.adapter.adapter_gio_hang;
 import vnua.k66httt.techworld.adapter.swipe;

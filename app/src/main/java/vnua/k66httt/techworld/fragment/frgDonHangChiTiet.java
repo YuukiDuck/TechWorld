@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import vnua.k66httt.techworld.Dao.DonHangChiTietDao;
 import vnua.k66httt.techworld.Model.DonHangChiTiet;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_don_hang_chi_tiet;
+import vnua.k66httt.techworld.adapter.adapter_don_hang_chi_tiet;
 import vnua.k66httt.techworld.databinding.FragmentFrgDonHangChiTietBinding;
 
 public class frgDonHangChiTiet extends Fragment {
@@ -27,7 +27,7 @@ public class frgDonHangChiTiet extends Fragment {
 
     private ArrayList<DonHangChiTiet> list = new ArrayList<>();
 
-    private Adapter_don_hang_chi_tiet adapterDonHangChiTiet;
+    private adapter_don_hang_chi_tiet adapterDonHangChiTiet;
     DonHangChiTietDao chiTietDao;
 
     @Override
@@ -43,7 +43,7 @@ public class frgDonHangChiTiet extends Fragment {
             Log.d("Mã đơn hàng", String.valueOf(maDonHang));
             if (maDonHang != 0) {
                 list = chiTietDao.getChiTietDonHangByMaDonHang(maDonHang);
-                adapterDonHangChiTiet = new Adapter_don_hang_chi_tiet(list, getContext());
+                adapterDonHangChiTiet = new adapter_don_hang_chi_tiet(list, getContext());
                 binding.rcvDonHangChiTiet.setAdapter(adapterDonHangChiTiet);
 
             }

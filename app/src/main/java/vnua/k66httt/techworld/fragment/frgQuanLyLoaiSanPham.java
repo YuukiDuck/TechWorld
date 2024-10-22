@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import vnua.k66httt.techworld.Dao.LoaiSanPhamDao;
 import vnua.k66httt.techworld.Model.LoaiSanPham;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_loai_san_pham;
+import vnua.k66httt.techworld.adapter.adapter_loai_san_pham;
 
 public class frgQuanLyLoaiSanPham extends Fragment {
     RecyclerView rcvloaisanpham;
     FloatingActionButton fltadd;
     private ArrayList<LoaiSanPham> list = new ArrayList<>();
     LoaiSanPhamDao dao;
-    Adapter_loai_san_pham adapter;
+    adapter_loai_san_pham adapter;
 
 
     public frgQuanLyLoaiSanPham() {
@@ -44,7 +44,7 @@ public class frgQuanLyLoaiSanPham extends Fragment {
         list = dao.getalltheloai();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcvloaisanpham.setLayoutManager(layoutManager);
-        adapter = new Adapter_loai_san_pham(list, getContext());
+        adapter = new adapter_loai_san_pham(list, getContext());
         rcvloaisanpham.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         fltadd.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +102,7 @@ public class frgQuanLyLoaiSanPham extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcvloaisanpham.setLayoutManager(layoutManager);
         ArrayList<LoaiSanPham> list = dao.getalltheloai();
-        adapter = new Adapter_loai_san_pham(list, getContext());
+        adapter = new adapter_loai_san_pham(list, getContext());
         rcvloaisanpham.setAdapter(adapter);
     }
 }

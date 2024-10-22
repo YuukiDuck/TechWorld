@@ -41,10 +41,11 @@ import vnua.k66httt.techworld.Model.GioHang;
 import vnua.k66httt.techworld.Model.SanPham;
 import vnua.k66httt.techworld.Model.Slideiten;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_gio_hang;
-import vnua.k66httt.techworld.adapter.Adapter_slide;
-import vnua.k66httt.techworld.adapter.Adapter_sp_namngang;
-import vnua.k66httt.techworld.adapter.Adapter_trangchu;
+
+import vnua.k66httt.techworld.adapter.adapter_gio_hang;
+import vnua.k66httt.techworld.adapter.adapter_slide;
+import vnua.k66httt.techworld.adapter.adapter_sp_namngang;
+import vnua.k66httt.techworld.adapter.adapter_trangchu;
 import vnua.k66httt.techworld.databinding.DialogChiTietSanPhamBinding;
 import vnua.k66httt.techworld.databinding.FragmentFrgTrangChuBinding;
 
@@ -54,12 +55,12 @@ public class frgTrangChu extends Fragment {
     ArrayList<SanPham> list;
     ArrayList<SanPham> listSapXep;
     SanPhamDao dao;
-    Adapter_trangchu adapter;
+    adapter_trangchu adapter;
     ArrayList<SanPham> listdem;
     private List<Slideiten> slidelist;
     private Handler slideHanlder = new Handler(Looper.getMainLooper());
 
-    private Adapter_gio_hang gioHangAdapter;
+    private adapter_gio_hang gioHangAdapter;
     private GioHangDao gioHangDao;
     private ArrayList<GioHang> gioHangArrayList = new ArrayList<>();
     private boolean hasMatchingProducts = true; // Thêm biến boolean
@@ -68,7 +69,7 @@ public class frgTrangChu extends Fragment {
         // Required empty public constructor
     }
 
-    private Adapter_sp_namngang adapteranh;
+    private adapter_sp_namngang adapteranh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,7 +82,7 @@ public class frgTrangChu extends Fragment {
         gioHangDao = new GioHangDao(getActivity());
 
         gioHangArrayList = gioHangDao.getDSGioHang();
-        gioHangAdapter = new Adapter_gio_hang(getActivity(), gioHangArrayList);
+        gioHangAdapter = new adapter_gio_hang(getActivity(), gioHangArrayList);
 
         binding.txttieuDe.setText("Hi " + hoten + ".");
         slidelist = new ArrayList<>(); // Khởi tạo slidelist trước khi sử dụng
@@ -91,7 +92,7 @@ public class frgTrangChu extends Fragment {
         slidelist.add(new Slideiten(R.drawable.anh6));
         slidelist.add(new Slideiten(R.drawable.anh8));
         slidelist.add(new Slideiten(R.drawable.anh9));
-        binding.viewpage.setAdapter(new Adapter_slide(slidelist, binding.viewpage));
+        binding.viewpage.setAdapter(new adapter_slide(slidelist, binding.viewpage));
         binding.chamduoi.setViewPager(binding.viewpage);
         //cài đặt thuộc tính viewpager 2
         binding.viewpage.setClipToPadding(false);
@@ -125,8 +126,8 @@ public class frgTrangChu extends Fragment {
         StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         binding.rcvtrangchu.setLayoutManager(gridLayoutManager);
         binding.rcvNamngang.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
-        adapteranh = new Adapter_sp_namngang(listSapXep, getContext());
-        adapter = new Adapter_trangchu(list, getContext());
+        adapteranh = new adapter_sp_namngang(listSapXep, getContext());
+        adapter = new adapter_trangchu(list, getContext());
         binding.rcvtrangchu.setAdapter(adapter);
         binding.rcvNamngang.setAdapter(adapteranh);
         adapteranh.setOnItemClick(new OnItemClick() {

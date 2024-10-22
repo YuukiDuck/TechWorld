@@ -17,7 +17,7 @@ import vnua.k66httt.techworld.Dao.DonHangDao;
 import vnua.k66httt.techworld.Interface.OnItemClick;
 import vnua.k66httt.techworld.Model.DonHang;
 import vnua.k66httt.techworld.R;
-import vnua.k66httt.techworld.adapter.Adapter_don_hang;
+import vnua.k66httt.techworld.adapter.adapter_don_hang;
 import vnua.k66httt.techworld.databinding.FragmentFrgQuanLyDonHangBinding;
 
 public class frgQuanLyDonHang extends Fragment {
@@ -28,7 +28,7 @@ public class frgQuanLyDonHang extends Fragment {
     FragmentFrgQuanLyDonHangBinding binding;
     private ArrayList<DonHang> list = new ArrayList<>();
     private DonHangDao dao;
-    private Adapter_don_hang adapterDonHang;
+    private adapter_don_hang adapterDonHang;
     DonHangChiTietDao chiTietDao;
 
     @Override
@@ -39,7 +39,7 @@ public class frgQuanLyDonHang extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvDonHang.setLayoutManager(layoutManager);
         list = dao.getDsDonHang();
-        adapterDonHang = new Adapter_don_hang(list, getContext());
+        adapterDonHang = new adapter_don_hang(list, getContext());
         binding.rcvDonHang.setAdapter(adapterDonHang);
         chiTietDao = new DonHangChiTietDao(getContext());
         adapterDonHang.setOnItemClick(new OnItemClick() {

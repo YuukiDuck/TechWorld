@@ -22,6 +22,8 @@
         <activity
             android:name=".ActivityManHinhCho.Man_Hinh_Cho_1" android:exported="false" />
         <activity
+            android:name=".ActivityManHinhCho.Man_Hinh_Cho_3" android:exported="false" />
+        <activity
             android:name=".Profile" android:exported="false" />
         <activity
             android:name=".man_hinh_dang_ky" android:exported="false" />

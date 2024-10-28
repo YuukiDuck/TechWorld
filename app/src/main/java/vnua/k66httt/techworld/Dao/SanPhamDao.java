@@ -72,19 +72,17 @@ public class SanPhamDao {
     public boolean update(int masanpham, String tensanpham, int gia, int maloaisanpham, String mota, String anhsanpham, int soluong) {
         SQLiteDatabase db = dbs.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tensanpham", tensanpham);
-        values.put("gia", gia);
-        values.put("maloaisanpham", maloaisanpham);
-        values.put("mota", mota);
-        values.put("anhsanpham", anhsanpham);
-        values.put("soluong", soluong);
+        values.put(COL_TENSP, tensanpham);
+        values.put(COL_GIA, gia);
+        values.put(COL_MALOAI, maloaisanpham);
+        values.put(COL_MOTA, mota);
+        values.put(COL_ANHSP, anhsanpham);
+        values.put(COL_SOLUONG, soluong);
         long check = db.update("SANPHAM", values, "masanpham = ?", new String[]{String.valueOf(masanpham)});
-        if (check == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        db.close();  // Đóng Database sau khi cập nhật
+        return check != -1;
     }
+
 
     public int delete(int masanpham) {
         SQLiteDatabase db = dbs.getWritableDatabase();
